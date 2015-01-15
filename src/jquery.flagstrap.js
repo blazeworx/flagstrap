@@ -252,40 +252,36 @@
         "ZM": "Zambia",
         "ZW": "Zimbabwe"
     };
-
     $.flagStrap = function (element, options, i) {
 
         var plugin = this;
 
+        var uniqueId = generateId(8);
+
         plugin.countries = {};
+        plugin.selected = {value: null, text: null};
+        plugin.settings = {inputName: 'country-' + uniqueId};
 
         var $container = $(element);
-        var htmlSelectId = 'flagstrap-' + i;
+        var htmlSelectId = 'flagstrap-' + uniqueId;
         var htmlSelect = '#' + htmlSelectId;
-        var instance = {
-            selected: {
-                value: null,
-                text: null
-            },
-            settings: {
-                inputName: 'country-' + i
-            }
-        };
 
         plugin.init = function () {
 
-            // Initialize Settings
-            plugin.countries = options.countries || countries;
-
             // Merge in global settings then merge in individual settings via data attributes
-            instance.settings = $.extend({}, defaults, options.settings);
-            instance.settings = $.extend({}, defaults, $container.data());
+            plugin.countries = countries;
 
-            // Input Name fallback
-            instance.settings.inputName = instance.settings.inputName || 'country-' + i;
+            // Initialize Settings, priority: defaults, init options, data attributes
+            plugin.countries = countries;
+            plugin.settings = $.extend({}, defaults, options, $container.data());
+
+            if (undefined !== plugin.settings.countries) {
+                plugin.countries = plugin.settings.countries;
+            }
 
             // Build HTML Select, Construct the drop down button, Assemble the drop down list items element and insert
             $container
+                .addClass('flagstrap')
                 .append(buildHtmlSelect)
                 .append(buildDropDownButton)
                 .append(buildDropDownButtonItemList);
@@ -296,14 +292,14 @@
         };
 
         var buildHtmlSelect = function () {
-            var htmlSelectElement = $('<select/>').attr('id', htmlSelectId).attr('name', instance.settings.inputName);
+            var htmlSelectElement = $('<select/>').attr('id', htmlSelectId).attr('name', plugin.settings.inputName);
 
             $.each(plugin.countries, function (code, country) {
                 var optionAttributes = {value: code};
-                if (instance.settings.selectedCountry !== undefined) {
-                    if (instance.settings.selectedCountry === code) {
+                if (plugin.settings.selectedCountry !== undefined) {
+                    if (plugin.settings.selectedCountry === code) {
                         optionAttributes = {value: code, selected: "selected"};
-                        instance.selected = {value: code, text: country}
+                        plugin.selected = {value: code, text: country}
                     }
                 }
                 htmlSelectElement.append($('<option>', optionAttributes).text(country));
@@ -312,31 +308,30 @@
             return htmlSelectElement;
         };
 
-
         var buildDropDownButton = function () {
 
             var selectedText = $(htmlSelect).find('option').first().text();
             var selectedValue = $(htmlSelect).find('option').first().val();
 
-            selectedText = instance.selected.text || selectedText;
-            selectedValue = instance.selected.value || selectedValue;
+            selectedText = plugin.selected.text || selectedText;
+            selectedValue = plugin.selected.value || selectedValue;
 
-            var $selectedLabel = $('<i/>').addClass('flagstrap-icon flagstrap-' + selectedValue.toLowerCase()).css('margin-right', instance.settings.labelMargin);
+            var $selectedLabel = $('<i/>').addClass('flagstrap-icon flagstrap-' + selectedValue.toLowerCase()).css('margin-right', plugin.settings.labelMargin);
 
             var buttonLabel = $('<span/>')
-                .addClass('flagstrap-selected-' + i)
+                .addClass('flagstrap-selected-' + uniqueId)
                 .html($selectedLabel)
                 .append(selectedText);
 
             var button = $('<button/>')
                 .attr('data-toggle', 'dropdown')
-                .attr('id', 'flagstrap-drop-down-' + i)
-                .addClass('btn ' + instance.settings.buttonType + ' ' + instance.settings.buttonSize + ' dropdown-toggle')
+                .attr('id', 'flagstrap-drop-down-' + uniqueId)
+                .addClass('btn ' + plugin.settings.buttonType + ' ' + plugin.settings.buttonSize + ' dropdown-toggle')
                 .html(buttonLabel);
 
             $('<span/>')
                 .addClass('caret')
-                .css('margin-left', instance.settings.labelMargin)
+                .css('margin-left', plugin.settings.labelMargin)
                 .insertAfter(buttonLabel);
 
             return button;
@@ -345,13 +340,13 @@
 
         var buildDropDownButtonItemList = function () {
             var items = $('<ul/>')
-                .attr('id', 'flagstrap-drop-down-' + i + '-list')
-                .attr('aria-labelled-by', 'flagstrap-drop-down-' + i)
+                .attr('id', 'flagstrap-drop-down-' + uniqueId + '-list')
+                .attr('aria-labelled-by', 'flagstrap-drop-down-' + uniqueId)
                 .addClass('dropdown-menu');
 
-            if (instance.settings.scrollable) {
+            if (plugin.settings.scrollable) {
                 items.css('height', 'auto')
-                    .css('max-height', instance.settings.scrollableHeight)
+                    .css('max-height', plugin.settings.scrollableHeight)
                     .css('overflow-x', 'hidden');
             }
 
@@ -363,7 +358,7 @@
                 var value = $(this).val();
 
                 // Build the flag icon
-                var flagIcon = $('<i/>').addClass('flagstrap-icon flagstrap-' + value.toLowerCase()).css('margin-right', instance.settings.labelMargin);
+                var flagIcon = $('<i/>').addClass('flagstrap-icon flagstrap-' + value.toLowerCase()).css('margin-right', plugin.settings.labelMargin);
 
                 // Build a clickable drop down option item, insert the flag and label, attach click event
                 var flagStrapItem = $('<a/>')
@@ -371,9 +366,9 @@
                     .html(flagIcon)
                     .append(text)
                     .on('click', function (e) {
-                        $htmlSelect.find('option').removeAttr('selected');
-                        $htmlSelect.find('option[value="' + $(this).data('val') + '"]').attr("selected", "selected");
-                        $('.flagstrap-selected-' + i).html($(this).html());
+                        $(htmlSelect).find('option').removeAttr('selected');
+                        $(htmlSelect).find('option[value="' + $(this).data('val') + '"]').attr("selected", "selected");
+                        $('.flagstrap-selected-' + uniqueId).html($(this).html());
                         e.preventDefault();
                     });
 
@@ -387,6 +382,20 @@
 
             return items;
         };
+
+        function generateId(length) {
+            var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split('');
+
+            if (!length) {
+                length = Math.floor(Math.random() * chars.length);
+            }
+
+            var str = '';
+            for (var i = 0; i < length; i++) {
+                str += chars[Math.floor(Math.random() * chars.length)];
+            }
+            return str;
+        }
 
         plugin.init();
 

@@ -1,3 +1,135 @@
 # Flagstrap
 
-jQuery plugin for creating Bootstrap 3 compatible country select boxes with flags.
+A lightwieght jQuery plugin for creating Bootstrap 3 compatible country select boxes with flags.
+
+###Usage
+
+####Basic
+
+```html
+<form class="form-horizontal">
+	<div class="form-group">
+        <label>Select Country</label><br>
+        <div class="flagstrap" data-input-name="country"></div>
+    </div>
+</form>
+```
+
+```html
+<script>
+    $('.flagstrap').flagStrap();
+</script>
+```
+
+####Options
+
+#####Using Data Attributes
+This example will create a Flagstrap Dropdown giving the input field the name of `country` with all countries available and `Germany` pre selected and in a `scrollable` dropdown with `max-height` of 250px. 
+
+```html
+<form>
+    <div class="form-group">
+        <label>Select Country</label><br>
+        <div id="flagstrap2"
+             data-input-name="country2"
+             data-selected-country="DE"
+             data-button-size="btn-md"
+             data-button-type="btn-default"
+             data-scrollable-height="250px" 
+             data-scrollable="true">
+        </div>
+    </div>
+</form>
+```
+
+```html
+<script>
+    $('#flagstrap2').flagStrap();
+</script>
+```
+
+#####Using Instance Options
+This example will create a Flagstrap Dropdown giving the input field the name of `country` with only `Australia`, `USA` and `Canada` as available options and no pre selection. 
+
+```html
+<form class="form-horizontal">
+    <div class="form-group">
+        <label>Select Country</label><br>
+        <div id="flagstrap3"></div>
+    </div>
+</form>
+```
+
+```html
+<script>
+    $('#flagstrap3').flagStrap({
+        countries: {
+            "AU": "Australia",
+            "GB": "United Kingdom",
+            "US": "United States"
+        },
+        inputName: 'country',
+        buttonSize: "btn-lg",
+        buttonType: "btn-primary",
+        labelMargin: "20px",
+        scrollable: false,
+        scrollableHeight: "350px"
+    });
+</script>
+```
+
+### Options
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 100px;">Type</th>
+        <th style="width: 100px;">Default</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>inputName</td>
+        <td>string</td>
+        <td>uniquely generated</td>
+        <td>the `name` attribute for the actual `select` input</td>
+    </tr>
+    <tr>
+        <td>buttonSize</td>
+        <td>string</td>
+        <td>"btn-md"</td>
+        <td>The bootstrap button size `class` for this drop down</td>
+    </tr>
+    <tr>
+        <td>buttonType</td>
+        <td>string</td>
+        <td>"btn-default"</td>
+        <td>The bootstrap button type `class` for this drop down</td>
+    </tr>
+    <tr>
+        <td>labelMargin</td>
+        <td>string</td>
+        <td>"20px"</td>
+        <td>The `margin` between `flag` and `text label`</td>
+    </tr>
+    <tr>
+        <td>scrollable</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Scrollable or full height drop down</td>
+    </tr>
+    <tr>
+        <td>scrollableHeight</td>
+        <td>string</td>
+        <td>"250px"</td>
+        <td>`max-height` for the scrollable drop down</td>
+    </tr>
+    <tr>
+        <td>countries *(optional)*</td>
+        <td>object</td>
+        <td>(all)</td>
+        <td>Only show specific countries<br>Example: {"GB": "United Kingdom", "US": "United States"} will only show the USA and UK.</td>
+    </tr>
+    </tbody>
+</table>

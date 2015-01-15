@@ -6,475 +6,77 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../dist/flags.css" rel="stylesheet">
+    <link href="../dist/css/flags.css" rel="stylesheet">
 </head>
 <body>
 
 <div class="container" style="margin-top:50px;">
-    <h1>FlagStrap v0.1</h1>
+    <h1>FlagStrap v0.3</h1>
     <hr>
 
-    <form role="form">
-        <div class="row">
-            <div class="col-xs-6">
-                <div class="form-group">
-                    <label>Select Country</label><br>
-                    <div class="flagstrap"
-                         data-input-name="country"
-                         data-selected-country="DE"
-                         data-button-size="btn-md"
-                         data-button-type="btn-default"
-                         data-scrollable="true"
-                         data-scrollable-height="250px">
-                    </div>
-                </div>
-                </div>
-                <div class="col-xs-6">
-                    <label>Select Country</label><br>
-                    <div class="flagstrap"
-                         data-input-name="country2"
-                         data-selected-country="DE"
-                         data-button-size="btn-lg"
-                         data-button-type="btn-warning">
-                    </div>
-                </div>
+<form>
+    <div class="form-group">
+        <label>Select Country</label><br>
+
+        <div id="basic" data-input-name="country"></div>
+    </div>
+</form>
+
+<form>
+    <div class="form-group">
+        <label>Select Country</label><br>
+        <div id="options"
+             data-input-name="country2"
+             data-selected-country="DE">
         </div>
-    </form>
+    </div>
+</form>
 
-    <hr>
+<form>
+    <div class="form-group">
+        <label>Select Country</label>
+        <div id="advanced"
+             data-input-name="country3"
+             data-selected-country="CA"
+             data-button-size="btn-lg"
+             data-button-type="btn-warning"
+             data-scrollable="true"
+             data-scrollable-height="250px"
+             data-countries='{"US": "United States","CA": "Canada"}'>
+        </div>
+    </div>
+</form>
 
-    <h3>HTML</h3>
-    <!-- HTML generated using hilite.me -->
-    <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
-    <pre style="background:none; border:none; margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">&lt;form</span> <span style="color: #FF0000">role=</span><span style="color: #0000FF">&quot;form&quot;</span><span style="color: #000080; font-weight: bold">&gt;</span>
-    <span style="color: #000080; font-weight: bold">&lt;div</span> <span style="color: #FF0000">class=</span><span style="color: #0000FF">&quot;form-group&quot;</span><span style="color: #000080; font-weight: bold">&gt;</span>
-        <span style="color: #000080; font-weight: bold">&lt;label&gt;</span>Select Country<span style="color: #000080; font-weight: bold">&lt;/label&gt;&lt;br&gt;</span>
-        <span style="color: #000080; font-weight: bold">&lt;div</span> <span style="color: #FF0000">class=</span><span style="color: #0000FF">&quot;flagstrap&quot;</span>
-             <span style="color: #FF0000">data-input-name=</span><span style="color: #0000FF">&quot;country&quot;</span>
-             <span style="color: #FF0000">data-selected-country=</span><span style="color: #0000FF">&quot;DE&quot;</span>
-             <span style="color: #FF0000">data-button-size=</span><span style="color: #0000FF">&quot;btn-md&quot;</span>
-             <span style="color: #FF0000">data-button-type=</span><span style="color: #0000FF">&quot;btn-default&quot;</span>
-             <span style="color: #FF0000">data-scrollable=</span><span style="color: #0000FF">&quot;true&quot;</span><span style="color: #000080; font-weight: bold">&gt;</span>
-        <span style="color: #000080; font-weight: bold">&lt;/div&gt;</span>
-    <span style="color: #000080; font-weight: bold">&lt;/div&gt;</span>
-<span style="color: #000080; font-weight: bold">&lt;/form&gt;</span>
-</pre></div>
-
-    <h3>Javascript</h3>
-    <!-- HTML generated using hilite.me -->
-    <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
-        <pre style="background:none;border:none;margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">&lt;script&gt;</span>
-    $(<span style="color: #0000FF">&#39;.flagstrap&#39;</span>).flagStrap();
-<span style="color: #000080; font-weight: bold">&lt;/script&gt;</span>
-</pre></div>
-
-    <h4>Or, with options</h4>
-    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
-    <pre style="background:none; border:none;margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">&lt;script&gt;</span>
-    $(<span style="color: #0000FF">&#39;.flagstrap&#39;</span>).flagStrap({
-        inputName: <span style="color: #0000FF">&quot;country&quot;</span>,
-        buttonSize: <span style="color: #0000FF">&quot;btn-md&quot;</span>,
-        buttonType: <span style="color: #0000FF">&quot;btn-default&quot;</span>,
-        selectedCountry: <span style="color: #0000FF">&quot;DE&quot;</span>,
-        scrollable: <span style="color: #0000FF">true</span>
-    });
-<span style="color: #000080; font-weight: bold">&lt;/script&gt;</span>
-</pre></div>
-<hr>
-    <h3>Plugin Source</h3>
-    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="background:none;border:none;margin: 0; line-height: 125%">(<span style="color: #000080; font-weight: bold">function</span> ($) {
-    $.fn.flagStrap = <span style="color: #000080; font-weight: bold">function</span> (userOptions) {
-
-        <span style="color: #000080; font-weight: bold">var</span> options = $.extend({
-            <span style="color: #008800; font-style: italic">// Default Settings</span>
-            buttonSize: <span style="color: #0000FF">&quot;btn-md&quot;</span>,
-            buttonType: <span style="color: #0000FF">&quot;btn-default&quot;</span>,
-            labelMargin: <span style="color: #0000FF">&quot;10px&quot;</span>,
-            inputName: <span style="color: #0000FF">&quot;country&quot;</span>,
-            scrollable: <span style="color: #000080; font-weight: bold">true</span>
-        }, userOptions);
-
-        <span style="color: #000080; font-weight: bold">var</span> countries = {
-            <span style="color: #0000FF">&quot;AF&quot;</span>: <span style="color: #0000FF">&quot;Afghanistan&quot;</span>,
-            <span style="color: #0000FF">&quot;AL&quot;</span>: <span style="color: #0000FF">&quot;Albania&quot;</span>,
-            <span style="color: #0000FF">&quot;DZ&quot;</span>: <span style="color: #0000FF">&quot;Algeria&quot;</span>,
-            <span style="color: #0000FF">&quot;AS&quot;</span>: <span style="color: #0000FF">&quot;American Samoa&quot;</span>,
-            <span style="color: #0000FF">&quot;AD&quot;</span>: <span style="color: #0000FF">&quot;Andorra&quot;</span>,
-            <span style="color: #0000FF">&quot;AO&quot;</span>: <span style="color: #0000FF">&quot;Angola&quot;</span>,
-            <span style="color: #0000FF">&quot;AI&quot;</span>: <span style="color: #0000FF">&quot;Anguilla&quot;</span>,
-            <span style="color: #0000FF">&quot;AG&quot;</span>: <span style="color: #0000FF">&quot;Antigua and Barbuda&quot;</span>,
-            <span style="color: #0000FF">&quot;AR&quot;</span>: <span style="color: #0000FF">&quot;Argentina&quot;</span>,
-            <span style="color: #0000FF">&quot;AM&quot;</span>: <span style="color: #0000FF">&quot;Armenia&quot;</span>,
-            <span style="color: #0000FF">&quot;AW&quot;</span>: <span style="color: #0000FF">&quot;Aruba&quot;</span>,
-            <span style="color: #0000FF">&quot;AU&quot;</span>: <span style="color: #0000FF">&quot;Australia&quot;</span>,
-            <span style="color: #0000FF">&quot;AT&quot;</span>: <span style="color: #0000FF">&quot;Austria&quot;</span>,
-            <span style="color: #0000FF">&quot;AZ&quot;</span>: <span style="color: #0000FF">&quot;Azerbaijan&quot;</span>,
-            <span style="color: #0000FF">&quot;BS&quot;</span>: <span style="color: #0000FF">&quot;Bahamas&quot;</span>,
-            <span style="color: #0000FF">&quot;BH&quot;</span>: <span style="color: #0000FF">&quot;Bahrain&quot;</span>,
-            <span style="color: #0000FF">&quot;BD&quot;</span>: <span style="color: #0000FF">&quot;Bangladesh&quot;</span>,
-            <span style="color: #0000FF">&quot;BB&quot;</span>: <span style="color: #0000FF">&quot;Barbados&quot;</span>,
-            <span style="color: #0000FF">&quot;BY&quot;</span>: <span style="color: #0000FF">&quot;Belarus&quot;</span>,
-            <span style="color: #0000FF">&quot;BE&quot;</span>: <span style="color: #0000FF">&quot;Belgium&quot;</span>,
-            <span style="color: #0000FF">&quot;BZ&quot;</span>: <span style="color: #0000FF">&quot;Belize&quot;</span>,
-            <span style="color: #0000FF">&quot;BJ&quot;</span>: <span style="color: #0000FF">&quot;Benin&quot;</span>,
-            <span style="color: #0000FF">&quot;BM&quot;</span>: <span style="color: #0000FF">&quot;Bermuda&quot;</span>,
-            <span style="color: #0000FF">&quot;BT&quot;</span>: <span style="color: #0000FF">&quot;Bhutan&quot;</span>,
-            <span style="color: #0000FF">&quot;BO&quot;</span>: <span style="color: #0000FF">&quot;Bolivia, Plurinational State of&quot;</span>,
-            <span style="color: #0000FF">&quot;BA&quot;</span>: <span style="color: #0000FF">&quot;Bosnia and Herzegovina&quot;</span>,
-            <span style="color: #0000FF">&quot;BW&quot;</span>: <span style="color: #0000FF">&quot;Botswana&quot;</span>,
-            <span style="color: #0000FF">&quot;BV&quot;</span>: <span style="color: #0000FF">&quot;Bouvet Island&quot;</span>,
-            <span style="color: #0000FF">&quot;BR&quot;</span>: <span style="color: #0000FF">&quot;Brazil&quot;</span>,
-            <span style="color: #0000FF">&quot;IO&quot;</span>: <span style="color: #0000FF">&quot;British Indian Ocean Territory&quot;</span>,
-            <span style="color: #0000FF">&quot;BN&quot;</span>: <span style="color: #0000FF">&quot;Brunei Darussalam&quot;</span>,
-            <span style="color: #0000FF">&quot;BG&quot;</span>: <span style="color: #0000FF">&quot;Bulgaria&quot;</span>,
-            <span style="color: #0000FF">&quot;BF&quot;</span>: <span style="color: #0000FF">&quot;Burkina Faso&quot;</span>,
-            <span style="color: #0000FF">&quot;BI&quot;</span>: <span style="color: #0000FF">&quot;Burundi&quot;</span>,
-            <span style="color: #0000FF">&quot;KH&quot;</span>: <span style="color: #0000FF">&quot;Cambodia&quot;</span>,
-            <span style="color: #0000FF">&quot;CM&quot;</span>: <span style="color: #0000FF">&quot;Cameroon&quot;</span>,
-            <span style="color: #0000FF">&quot;CA&quot;</span>: <span style="color: #0000FF">&quot;Canada&quot;</span>,
-            <span style="color: #0000FF">&quot;CV&quot;</span>: <span style="color: #0000FF">&quot;Cape Verde&quot;</span>,
-            <span style="color: #0000FF">&quot;KY&quot;</span>: <span style="color: #0000FF">&quot;Cayman Islands&quot;</span>,
-            <span style="color: #0000FF">&quot;CF&quot;</span>: <span style="color: #0000FF">&quot;Central African Republic&quot;</span>,
-            <span style="color: #0000FF">&quot;TD&quot;</span>: <span style="color: #0000FF">&quot;Chad&quot;</span>,
-            <span style="color: #0000FF">&quot;CL&quot;</span>: <span style="color: #0000FF">&quot;Chile&quot;</span>,
-            <span style="color: #0000FF">&quot;CN&quot;</span>: <span style="color: #0000FF">&quot;China&quot;</span>,
-            <span style="color: #0000FF">&quot;CO&quot;</span>: <span style="color: #0000FF">&quot;Colombia&quot;</span>,
-            <span style="color: #0000FF">&quot;KM&quot;</span>: <span style="color: #0000FF">&quot;Comoros&quot;</span>,
-            <span style="color: #0000FF">&quot;CG&quot;</span>: <span style="color: #0000FF">&quot;Congo&quot;</span>,
-            <span style="color: #0000FF">&quot;CD&quot;</span>: <span style="color: #0000FF">&quot;Congo, the Democratic Republic of the&quot;</span>,
-            <span style="color: #0000FF">&quot;CK&quot;</span>: <span style="color: #0000FF">&quot;Cook Islands&quot;</span>,
-            <span style="color: #0000FF">&quot;CR&quot;</span>: <span style="color: #0000FF">&quot;Costa Rica&quot;</span>,
-            <span style="color: #0000FF">&quot;CI&quot;</span>: <span style="color: #0000FF">&quot;Côte d&#39;Ivoire&quot;</span>,
-            <span style="color: #0000FF">&quot;HR&quot;</span>: <span style="color: #0000FF">&quot;Croatia&quot;</span>,
-            <span style="color: #0000FF">&quot;CU&quot;</span>: <span style="color: #0000FF">&quot;Cuba&quot;</span>,
-            <span style="color: #0000FF">&quot;CW&quot;</span>: <span style="color: #0000FF">&quot;Curaçao&quot;</span>,
-            <span style="color: #0000FF">&quot;CY&quot;</span>: <span style="color: #0000FF">&quot;Cyprus&quot;</span>,
-            <span style="color: #0000FF">&quot;CZ&quot;</span>: <span style="color: #0000FF">&quot;Czech Republic&quot;</span>,
-            <span style="color: #0000FF">&quot;DK&quot;</span>: <span style="color: #0000FF">&quot;Denmark&quot;</span>,
-            <span style="color: #0000FF">&quot;DJ&quot;</span>: <span style="color: #0000FF">&quot;Djibouti&quot;</span>,
-            <span style="color: #0000FF">&quot;DM&quot;</span>: <span style="color: #0000FF">&quot;Dominica&quot;</span>,
-            <span style="color: #0000FF">&quot;DO&quot;</span>: <span style="color: #0000FF">&quot;Dominican Republic&quot;</span>,
-            <span style="color: #0000FF">&quot;EC&quot;</span>: <span style="color: #0000FF">&quot;Ecuador&quot;</span>,
-            <span style="color: #0000FF">&quot;EG&quot;</span>: <span style="color: #0000FF">&quot;Egypt&quot;</span>,
-            <span style="color: #0000FF">&quot;SV&quot;</span>: <span style="color: #0000FF">&quot;El Salvador&quot;</span>,
-            <span style="color: #0000FF">&quot;GQ&quot;</span>: <span style="color: #0000FF">&quot;Equatorial Guinea&quot;</span>,
-            <span style="color: #0000FF">&quot;ER&quot;</span>: <span style="color: #0000FF">&quot;Eritrea&quot;</span>,
-            <span style="color: #0000FF">&quot;EE&quot;</span>: <span style="color: #0000FF">&quot;Estonia&quot;</span>,
-            <span style="color: #0000FF">&quot;ET&quot;</span>: <span style="color: #0000FF">&quot;Ethiopia&quot;</span>,
-            <span style="color: #0000FF">&quot;FK&quot;</span>: <span style="color: #0000FF">&quot;Falkland Islands (Malvinas)&quot;</span>,
-            <span style="color: #0000FF">&quot;FO&quot;</span>: <span style="color: #0000FF">&quot;Faroe Islands&quot;</span>,
-            <span style="color: #0000FF">&quot;FJ&quot;</span>: <span style="color: #0000FF">&quot;Fiji&quot;</span>,
-            <span style="color: #0000FF">&quot;FI&quot;</span>: <span style="color: #0000FF">&quot;Finland&quot;</span>,
-            <span style="color: #0000FF">&quot;FR&quot;</span>: <span style="color: #0000FF">&quot;France&quot;</span>,
-            <span style="color: #0000FF">&quot;GF&quot;</span>: <span style="color: #0000FF">&quot;French Guiana&quot;</span>,
-            <span style="color: #0000FF">&quot;PF&quot;</span>: <span style="color: #0000FF">&quot;French Polynesia&quot;</span>,
-            <span style="color: #0000FF">&quot;TF&quot;</span>: <span style="color: #0000FF">&quot;French Southern Territories&quot;</span>,
-            <span style="color: #0000FF">&quot;GA&quot;</span>: <span style="color: #0000FF">&quot;Gabon&quot;</span>,
-            <span style="color: #0000FF">&quot;GM&quot;</span>: <span style="color: #0000FF">&quot;Gambia&quot;</span>,
-            <span style="color: #0000FF">&quot;GE&quot;</span>: <span style="color: #0000FF">&quot;Georgia&quot;</span>,
-            <span style="color: #0000FF">&quot;DE&quot;</span>: <span style="color: #0000FF">&quot;Germany&quot;</span>,
-            <span style="color: #0000FF">&quot;GH&quot;</span>: <span style="color: #0000FF">&quot;Ghana&quot;</span>,
-            <span style="color: #0000FF">&quot;GI&quot;</span>: <span style="color: #0000FF">&quot;Gibraltar&quot;</span>,
-            <span style="color: #0000FF">&quot;GR&quot;</span>: <span style="color: #0000FF">&quot;Greece&quot;</span>,
-            <span style="color: #0000FF">&quot;GL&quot;</span>: <span style="color: #0000FF">&quot;Greenland&quot;</span>,
-            <span style="color: #0000FF">&quot;GD&quot;</span>: <span style="color: #0000FF">&quot;Grenada&quot;</span>,
-            <span style="color: #0000FF">&quot;GP&quot;</span>: <span style="color: #0000FF">&quot;Guadeloupe&quot;</span>,
-            <span style="color: #0000FF">&quot;GU&quot;</span>: <span style="color: #0000FF">&quot;Guam&quot;</span>,
-            <span style="color: #0000FF">&quot;GT&quot;</span>: <span style="color: #0000FF">&quot;Guatemala&quot;</span>,
-            <span style="color: #0000FF">&quot;GG&quot;</span>: <span style="color: #0000FF">&quot;Guernsey&quot;</span>,
-            <span style="color: #0000FF">&quot;GN&quot;</span>: <span style="color: #0000FF">&quot;Guinea&quot;</span>,
-            <span style="color: #0000FF">&quot;GW&quot;</span>: <span style="color: #0000FF">&quot;Guinea-Bissau&quot;</span>,
-            <span style="color: #0000FF">&quot;GY&quot;</span>: <span style="color: #0000FF">&quot;Guyana&quot;</span>,
-            <span style="color: #0000FF">&quot;HT&quot;</span>: <span style="color: #0000FF">&quot;Haiti&quot;</span>,
-            <span style="color: #0000FF">&quot;HM&quot;</span>: <span style="color: #0000FF">&quot;Heard Island and McDonald Islands&quot;</span>,
-            <span style="color: #0000FF">&quot;VA&quot;</span>: <span style="color: #0000FF">&quot;Holy See (Vatican City State)&quot;</span>,
-            <span style="color: #0000FF">&quot;HN&quot;</span>: <span style="color: #0000FF">&quot;Honduras&quot;</span>,
-            <span style="color: #0000FF">&quot;HK&quot;</span>: <span style="color: #0000FF">&quot;Hong Kong&quot;</span>,
-            <span style="color: #0000FF">&quot;HU&quot;</span>: <span style="color: #0000FF">&quot;Hungary&quot;</span>,
-            <span style="color: #0000FF">&quot;IS&quot;</span>: <span style="color: #0000FF">&quot;Iceland&quot;</span>,
-            <span style="color: #0000FF">&quot;IN&quot;</span>: <span style="color: #0000FF">&quot;India&quot;</span>,
-            <span style="color: #0000FF">&quot;ID&quot;</span>: <span style="color: #0000FF">&quot;Indonesia&quot;</span>,
-            <span style="color: #0000FF">&quot;IR&quot;</span>: <span style="color: #0000FF">&quot;Iran, Islamic Republic of&quot;</span>,
-            <span style="color: #0000FF">&quot;IQ&quot;</span>: <span style="color: #0000FF">&quot;Iraq&quot;</span>,
-            <span style="color: #0000FF">&quot;IE&quot;</span>: <span style="color: #0000FF">&quot;Ireland&quot;</span>,
-            <span style="color: #0000FF">&quot;IM&quot;</span>: <span style="color: #0000FF">&quot;Isle of Man&quot;</span>,
-            <span style="color: #0000FF">&quot;IL&quot;</span>: <span style="color: #0000FF">&quot;Israel&quot;</span>,
-            <span style="color: #0000FF">&quot;IT&quot;</span>: <span style="color: #0000FF">&quot;Italy&quot;</span>,
-            <span style="color: #0000FF">&quot;JM&quot;</span>: <span style="color: #0000FF">&quot;Jamaica&quot;</span>,
-            <span style="color: #0000FF">&quot;JP&quot;</span>: <span style="color: #0000FF">&quot;Japan&quot;</span>,
-            <span style="color: #0000FF">&quot;JE&quot;</span>: <span style="color: #0000FF">&quot;Jersey&quot;</span>,
-            <span style="color: #0000FF">&quot;JO&quot;</span>: <span style="color: #0000FF">&quot;Jordan&quot;</span>,
-            <span style="color: #0000FF">&quot;KZ&quot;</span>: <span style="color: #0000FF">&quot;Kazakhstan&quot;</span>,
-            <span style="color: #0000FF">&quot;KE&quot;</span>: <span style="color: #0000FF">&quot;Kenya&quot;</span>,
-            <span style="color: #0000FF">&quot;KI&quot;</span>: <span style="color: #0000FF">&quot;Kiribati&quot;</span>,
-            <span style="color: #0000FF">&quot;KP&quot;</span>: <span style="color: #0000FF">&quot;Korea, Democratic People&#39;s Republic of&quot;</span>,
-            <span style="color: #0000FF">&quot;KR&quot;</span>: <span style="color: #0000FF">&quot;Korea, Republic of&quot;</span>,
-            <span style="color: #0000FF">&quot;KW&quot;</span>: <span style="color: #0000FF">&quot;Kuwait&quot;</span>,
-            <span style="color: #0000FF">&quot;KG&quot;</span>: <span style="color: #0000FF">&quot;Kyrgyzstan&quot;</span>,
-            <span style="color: #0000FF">&quot;LA&quot;</span>: <span style="color: #0000FF">&quot;Lao People&#39;s Democratic Republic&quot;</span>,
-            <span style="color: #0000FF">&quot;LV&quot;</span>: <span style="color: #0000FF">&quot;Latvia&quot;</span>,
-            <span style="color: #0000FF">&quot;LB&quot;</span>: <span style="color: #0000FF">&quot;Lebanon&quot;</span>,
-            <span style="color: #0000FF">&quot;LS&quot;</span>: <span style="color: #0000FF">&quot;Lesotho&quot;</span>,
-            <span style="color: #0000FF">&quot;LR&quot;</span>: <span style="color: #0000FF">&quot;Liberia&quot;</span>,
-            <span style="color: #0000FF">&quot;LY&quot;</span>: <span style="color: #0000FF">&quot;Libya&quot;</span>,
-            <span style="color: #0000FF">&quot;LI&quot;</span>: <span style="color: #0000FF">&quot;Liechtenstein&quot;</span>,
-            <span style="color: #0000FF">&quot;LT&quot;</span>: <span style="color: #0000FF">&quot;Lithuania&quot;</span>,
-            <span style="color: #0000FF">&quot;LU&quot;</span>: <span style="color: #0000FF">&quot;Luxembourg&quot;</span>,
-            <span style="color: #0000FF">&quot;MO&quot;</span>: <span style="color: #0000FF">&quot;Macao&quot;</span>,
-            <span style="color: #0000FF">&quot;MK&quot;</span>: <span style="color: #0000FF">&quot;Macedonia, the former Yugoslav Republic of&quot;</span>,
-            <span style="color: #0000FF">&quot;MG&quot;</span>: <span style="color: #0000FF">&quot;Madagascar&quot;</span>,
-            <span style="color: #0000FF">&quot;MW&quot;</span>: <span style="color: #0000FF">&quot;Malawi&quot;</span>,
-            <span style="color: #0000FF">&quot;MY&quot;</span>: <span style="color: #0000FF">&quot;Malaysia&quot;</span>,
-            <span style="color: #0000FF">&quot;MV&quot;</span>: <span style="color: #0000FF">&quot;Maldives&quot;</span>,
-            <span style="color: #0000FF">&quot;ML&quot;</span>: <span style="color: #0000FF">&quot;Mali&quot;</span>,
-            <span style="color: #0000FF">&quot;MT&quot;</span>: <span style="color: #0000FF">&quot;Malta&quot;</span>,
-            <span style="color: #0000FF">&quot;MH&quot;</span>: <span style="color: #0000FF">&quot;Marshall Islands&quot;</span>,
-            <span style="color: #0000FF">&quot;MQ&quot;</span>: <span style="color: #0000FF">&quot;Martinique&quot;</span>,
-            <span style="color: #0000FF">&quot;MR&quot;</span>: <span style="color: #0000FF">&quot;Mauritania&quot;</span>,
-            <span style="color: #0000FF">&quot;MU&quot;</span>: <span style="color: #0000FF">&quot;Mauritius&quot;</span>,
-            <span style="color: #0000FF">&quot;YT&quot;</span>: <span style="color: #0000FF">&quot;Mayotte&quot;</span>,
-            <span style="color: #0000FF">&quot;MX&quot;</span>: <span style="color: #0000FF">&quot;Mexico&quot;</span>,
-            <span style="color: #0000FF">&quot;FM&quot;</span>: <span style="color: #0000FF">&quot;Micronesia, Federated States of&quot;</span>,
-            <span style="color: #0000FF">&quot;MD&quot;</span>: <span style="color: #0000FF">&quot;Moldova, Republic of&quot;</span>,
-            <span style="color: #0000FF">&quot;MC&quot;</span>: <span style="color: #0000FF">&quot;Monaco&quot;</span>,
-            <span style="color: #0000FF">&quot;MN&quot;</span>: <span style="color: #0000FF">&quot;Mongolia&quot;</span>,
-            <span style="color: #0000FF">&quot;ME&quot;</span>: <span style="color: #0000FF">&quot;Montenegro&quot;</span>,
-            <span style="color: #0000FF">&quot;MS&quot;</span>: <span style="color: #0000FF">&quot;Montserrat&quot;</span>,
-            <span style="color: #0000FF">&quot;MA&quot;</span>: <span style="color: #0000FF">&quot;Morocco&quot;</span>,
-            <span style="color: #0000FF">&quot;MZ&quot;</span>: <span style="color: #0000FF">&quot;Mozambique&quot;</span>,
-            <span style="color: #0000FF">&quot;MM&quot;</span>: <span style="color: #0000FF">&quot;Myanmar&quot;</span>,
-            <span style="color: #0000FF">&quot;NA&quot;</span>: <span style="color: #0000FF">&quot;Namibia&quot;</span>,
-            <span style="color: #0000FF">&quot;NR&quot;</span>: <span style="color: #0000FF">&quot;Nauru&quot;</span>,
-            <span style="color: #0000FF">&quot;NP&quot;</span>: <span style="color: #0000FF">&quot;Nepal&quot;</span>,
-            <span style="color: #0000FF">&quot;NL&quot;</span>: <span style="color: #0000FF">&quot;Netherlands&quot;</span>,
-            <span style="color: #0000FF">&quot;NC&quot;</span>: <span style="color: #0000FF">&quot;New Caledonia&quot;</span>,
-            <span style="color: #0000FF">&quot;NZ&quot;</span>: <span style="color: #0000FF">&quot;New Zealand&quot;</span>,
-            <span style="color: #0000FF">&quot;NI&quot;</span>: <span style="color: #0000FF">&quot;Nicaragua&quot;</span>,
-            <span style="color: #0000FF">&quot;NE&quot;</span>: <span style="color: #0000FF">&quot;Niger&quot;</span>,
-            <span style="color: #0000FF">&quot;NG&quot;</span>: <span style="color: #0000FF">&quot;Nigeria&quot;</span>,
-            <span style="color: #0000FF">&quot;NU&quot;</span>: <span style="color: #0000FF">&quot;Niue&quot;</span>,
-            <span style="color: #0000FF">&quot;NF&quot;</span>: <span style="color: #0000FF">&quot;Norfolk Island&quot;</span>,
-            <span style="color: #0000FF">&quot;MP&quot;</span>: <span style="color: #0000FF">&quot;Northern Mariana Islands&quot;</span>,
-            <span style="color: #0000FF">&quot;NO&quot;</span>: <span style="color: #0000FF">&quot;Norway&quot;</span>,
-            <span style="color: #0000FF">&quot;OM&quot;</span>: <span style="color: #0000FF">&quot;Oman&quot;</span>,
-            <span style="color: #0000FF">&quot;PK&quot;</span>: <span style="color: #0000FF">&quot;Pakistan&quot;</span>,
-            <span style="color: #0000FF">&quot;PW&quot;</span>: <span style="color: #0000FF">&quot;Palau&quot;</span>,
-            <span style="color: #0000FF">&quot;PS&quot;</span>: <span style="color: #0000FF">&quot;Palestinian Territory, Occupied&quot;</span>,
-            <span style="color: #0000FF">&quot;PA&quot;</span>: <span style="color: #0000FF">&quot;Panama&quot;</span>,
-            <span style="color: #0000FF">&quot;PG&quot;</span>: <span style="color: #0000FF">&quot;Papua New Guinea&quot;</span>,
-            <span style="color: #0000FF">&quot;PY&quot;</span>: <span style="color: #0000FF">&quot;Paraguay&quot;</span>,
-            <span style="color: #0000FF">&quot;PE&quot;</span>: <span style="color: #0000FF">&quot;Peru&quot;</span>,
-            <span style="color: #0000FF">&quot;PH&quot;</span>: <span style="color: #0000FF">&quot;Philippines&quot;</span>,
-            <span style="color: #0000FF">&quot;PN&quot;</span>: <span style="color: #0000FF">&quot;Pitcairn&quot;</span>,
-            <span style="color: #0000FF">&quot;PL&quot;</span>: <span style="color: #0000FF">&quot;Poland&quot;</span>,
-            <span style="color: #0000FF">&quot;PT&quot;</span>: <span style="color: #0000FF">&quot;Portugal&quot;</span>,
-            <span style="color: #0000FF">&quot;PR&quot;</span>: <span style="color: #0000FF">&quot;Puerto Rico&quot;</span>,
-            <span style="color: #0000FF">&quot;QA&quot;</span>: <span style="color: #0000FF">&quot;Qatar&quot;</span>,
-            <span style="color: #0000FF">&quot;RE&quot;</span>: <span style="color: #0000FF">&quot;Réunion&quot;</span>,
-            <span style="color: #0000FF">&quot;RO&quot;</span>: <span style="color: #0000FF">&quot;Romania&quot;</span>,
-            <span style="color: #0000FF">&quot;RU&quot;</span>: <span style="color: #0000FF">&quot;Russian Federation&quot;</span>,
-            <span style="color: #0000FF">&quot;RW&quot;</span>: <span style="color: #0000FF">&quot;Rwanda&quot;</span>,
-            <span style="color: #0000FF">&quot;SH&quot;</span>: <span style="color: #0000FF">&quot;Saint Helena, Ascension and Tristan da Cunha&quot;</span>,
-            <span style="color: #0000FF">&quot;KN&quot;</span>: <span style="color: #0000FF">&quot;Saint Kitts and Nevis&quot;</span>,
-            <span style="color: #0000FF">&quot;LC&quot;</span>: <span style="color: #0000FF">&quot;Saint Lucia&quot;</span>,
-            <span style="color: #0000FF">&quot;MF&quot;</span>: <span style="color: #0000FF">&quot;Saint Martin (French part)&quot;</span>,
-            <span style="color: #0000FF">&quot;PM&quot;</span>: <span style="color: #0000FF">&quot;Saint Pierre and Miquelon&quot;</span>,
-            <span style="color: #0000FF">&quot;VC&quot;</span>: <span style="color: #0000FF">&quot;Saint Vincent and the Grenadines&quot;</span>,
-            <span style="color: #0000FF">&quot;WS&quot;</span>: <span style="color: #0000FF">&quot;Samoa&quot;</span>,
-            <span style="color: #0000FF">&quot;SM&quot;</span>: <span style="color: #0000FF">&quot;San Marino&quot;</span>,
-            <span style="color: #0000FF">&quot;ST&quot;</span>: <span style="color: #0000FF">&quot;Sao Tome and Principe&quot;</span>,
-            <span style="color: #0000FF">&quot;SA&quot;</span>: <span style="color: #0000FF">&quot;Saudi Arabia&quot;</span>,
-            <span style="color: #0000FF">&quot;SN&quot;</span>: <span style="color: #0000FF">&quot;Senegal&quot;</span>,
-            <span style="color: #0000FF">&quot;RS&quot;</span>: <span style="color: #0000FF">&quot;Serbia&quot;</span>,
-            <span style="color: #0000FF">&quot;SC&quot;</span>: <span style="color: #0000FF">&quot;Seychelles&quot;</span>,
-            <span style="color: #0000FF">&quot;SL&quot;</span>: <span style="color: #0000FF">&quot;Sierra Leone&quot;</span>,
-            <span style="color: #0000FF">&quot;SG&quot;</span>: <span style="color: #0000FF">&quot;Singapore&quot;</span>,
-            <span style="color: #0000FF">&quot;SX&quot;</span>: <span style="color: #0000FF">&quot;Sint Maarten (Dutch part)&quot;</span>,
-            <span style="color: #0000FF">&quot;SK&quot;</span>: <span style="color: #0000FF">&quot;Slovakia&quot;</span>,
-            <span style="color: #0000FF">&quot;SI&quot;</span>: <span style="color: #0000FF">&quot;Slovenia&quot;</span>,
-            <span style="color: #0000FF">&quot;SB&quot;</span>: <span style="color: #0000FF">&quot;Solomon Islands&quot;</span>,
-            <span style="color: #0000FF">&quot;SO&quot;</span>: <span style="color: #0000FF">&quot;Somalia&quot;</span>,
-            <span style="color: #0000FF">&quot;ZA&quot;</span>: <span style="color: #0000FF">&quot;South Africa&quot;</span>,
-            <span style="color: #0000FF">&quot;GS&quot;</span>: <span style="color: #0000FF">&quot;South Georgia and the South Sandwich Islands&quot;</span>,
-            <span style="color: #0000FF">&quot;SS&quot;</span>: <span style="color: #0000FF">&quot;South Sudan&quot;</span>,
-            <span style="color: #0000FF">&quot;ES&quot;</span>: <span style="color: #0000FF">&quot;Spain&quot;</span>,
-            <span style="color: #0000FF">&quot;LK&quot;</span>: <span style="color: #0000FF">&quot;Sri Lanka&quot;</span>,
-            <span style="color: #0000FF">&quot;SD&quot;</span>: <span style="color: #0000FF">&quot;Sudan&quot;</span>,
-            <span style="color: #0000FF">&quot;SR&quot;</span>: <span style="color: #0000FF">&quot;Suriname&quot;</span>,
-            <span style="color: #0000FF">&quot;SZ&quot;</span>: <span style="color: #0000FF">&quot;Swaziland&quot;</span>,
-            <span style="color: #0000FF">&quot;SE&quot;</span>: <span style="color: #0000FF">&quot;Sweden&quot;</span>,
-            <span style="color: #0000FF">&quot;CH&quot;</span>: <span style="color: #0000FF">&quot;Switzerland&quot;</span>,
-            <span style="color: #0000FF">&quot;SY&quot;</span>: <span style="color: #0000FF">&quot;Syrian Arab Republic&quot;</span>,
-            <span style="color: #0000FF">&quot;TW&quot;</span>: <span style="color: #0000FF">&quot;Taiwan, Province of China&quot;</span>,
-            <span style="color: #0000FF">&quot;TJ&quot;</span>: <span style="color: #0000FF">&quot;Tajikistan&quot;</span>,
-            <span style="color: #0000FF">&quot;TZ&quot;</span>: <span style="color: #0000FF">&quot;Tanzania, United Republic of&quot;</span>,
-            <span style="color: #0000FF">&quot;TH&quot;</span>: <span style="color: #0000FF">&quot;Thailand&quot;</span>,
-            <span style="color: #0000FF">&quot;TL&quot;</span>: <span style="color: #0000FF">&quot;Timor-Leste&quot;</span>,
-            <span style="color: #0000FF">&quot;TG&quot;</span>: <span style="color: #0000FF">&quot;Togo&quot;</span>,
-            <span style="color: #0000FF">&quot;TK&quot;</span>: <span style="color: #0000FF">&quot;Tokelau&quot;</span>,
-            <span style="color: #0000FF">&quot;TO&quot;</span>: <span style="color: #0000FF">&quot;Tonga&quot;</span>,
-            <span style="color: #0000FF">&quot;TT&quot;</span>: <span style="color: #0000FF">&quot;Trinidad and Tobago&quot;</span>,
-            <span style="color: #0000FF">&quot;TN&quot;</span>: <span style="color: #0000FF">&quot;Tunisia&quot;</span>,
-            <span style="color: #0000FF">&quot;TR&quot;</span>: <span style="color: #0000FF">&quot;Turkey&quot;</span>,
-            <span style="color: #0000FF">&quot;TM&quot;</span>: <span style="color: #0000FF">&quot;Turkmenistan&quot;</span>,
-            <span style="color: #0000FF">&quot;TC&quot;</span>: <span style="color: #0000FF">&quot;Turks and Caicos Islands&quot;</span>,
-            <span style="color: #0000FF">&quot;TV&quot;</span>: <span style="color: #0000FF">&quot;Tuvalu&quot;</span>,
-            <span style="color: #0000FF">&quot;UG&quot;</span>: <span style="color: #0000FF">&quot;Uganda&quot;</span>,
-            <span style="color: #0000FF">&quot;UA&quot;</span>: <span style="color: #0000FF">&quot;Ukraine&quot;</span>,
-            <span style="color: #0000FF">&quot;AE&quot;</span>: <span style="color: #0000FF">&quot;United Arab Emirates&quot;</span>,
-            <span style="color: #0000FF">&quot;GB&quot;</span>: <span style="color: #0000FF">&quot;United Kingdom&quot;</span>,
-            <span style="color: #0000FF">&quot;US&quot;</span>: <span style="color: #0000FF">&quot;United States&quot;</span>,
-            <span style="color: #0000FF">&quot;UM&quot;</span>: <span style="color: #0000FF">&quot;United States Minor Outlying Islands&quot;</span>,
-            <span style="color: #0000FF">&quot;UY&quot;</span>: <span style="color: #0000FF">&quot;Uruguay&quot;</span>,
-            <span style="color: #0000FF">&quot;UZ&quot;</span>: <span style="color: #0000FF">&quot;Uzbekistan&quot;</span>,
-            <span style="color: #0000FF">&quot;VU&quot;</span>: <span style="color: #0000FF">&quot;Vanuatu&quot;</span>,
-            <span style="color: #0000FF">&quot;VE&quot;</span>: <span style="color: #0000FF">&quot;Venezuela, Bolivarian Republic of&quot;</span>,
-            <span style="color: #0000FF">&quot;VN&quot;</span>: <span style="color: #0000FF">&quot;Viet Nam&quot;</span>,
-            <span style="color: #0000FF">&quot;VG&quot;</span>: <span style="color: #0000FF">&quot;Virgin Islands, British&quot;</span>,
-            <span style="color: #0000FF">&quot;VI&quot;</span>: <span style="color: #0000FF">&quot;Virgin Islands, U.S.&quot;</span>,
-            <span style="color: #0000FF">&quot;WF&quot;</span>: <span style="color: #0000FF">&quot;Wallis and Futuna&quot;</span>,
-            <span style="color: #0000FF">&quot;EH&quot;</span>: <span style="color: #0000FF">&quot;Western Sahara&quot;</span>,
-            <span style="color: #0000FF">&quot;YE&quot;</span>: <span style="color: #0000FF">&quot;Yemen&quot;</span>,
-            <span style="color: #0000FF">&quot;ZM&quot;</span>: <span style="color: #0000FF">&quot;Zambia&quot;</span>,
-            <span style="color: #0000FF">&quot;ZW&quot;</span>: <span style="color: #0000FF">&quot;Zimbabwe&quot;</span>
-        };
-
-        <span style="color: #000080; font-weight: bold">return</span> <span style="color: #000080; font-weight: bold">this</span>.each(<span style="color: #000080; font-weight: bold">function</span> (i) {
-
-            <span style="color: #008800; font-style: italic">// Define base elements</span>
-            <span style="color: #000080; font-weight: bold">var</span> container = $(<span style="color: #000080; font-weight: bold">this</span>);
-            <span style="color: #000080; font-weight: bold">var</span> elementId = <span style="color: #0000FF">&#39;flagstrap-&#39;</span> + i;
-
-            <span style="color: #008800; font-style: italic">// Build HTML select and attach to container</span>
-            <span style="color: #000080; font-weight: bold">var</span> element = $(<span style="color: #0000FF">&#39;&lt;select/&gt;&#39;</span>).attr(<span style="color: #0000FF">&#39;id&#39;</span>, elementId).attr(<span style="color: #0000FF">&#39;name&#39;</span>, options.inputName);
-            container.prepend(element);
-
-            <span style="color: #008800; font-style: italic">// Check container DIV for options set with data-attributes</span>
-            options = $.extend({}, options, container.data());
-
-            <span style="color: #008800; font-style: italic">// Build HTML Select options, mark selected country if specified in options and  attach to select.</span>
-            $.each(countries, <span style="color: #000080; font-weight: bold">function</span> (code, country) {
-                <span style="color: #000080; font-weight: bold">var</span> optionAttributes;
-                <span style="color: #000080; font-weight: bold">if</span> (options.selectedCountry != <span style="color: #000080; font-weight: bold">undefined</span>) {
-                    optionAttributes = {value: code};
-                    <span style="color: #000080; font-weight: bold">if</span> (options.selectedCountry == code) {
-                        optionAttributes = {value: code, selected: <span style="color: #0000FF">&quot;selected&quot;</span>};
-                    }
-                }
-                element.append($(<span style="color: #0000FF">&#39;&lt;option&gt;&#39;</span>, optionAttributes).text(country));
-            });
-
-            <span style="color: #008800; font-style: italic">// Begin building bootstrap drop down, yolo!</span>
-            <span style="color: #000080; font-weight: bold">var</span> selectedText;
-            <span style="color: #000080; font-weight: bold">var</span> selectedLabel;
-
-            <span style="color: #008800; font-style: italic">// Determine if a country is pre-selected or not and build initial drop down label</span>
-            selectedText = element.find(<span style="color: #0000FF">&#39;option[value=&quot;&#39;</span> + element.val() + <span style="color: #0000FF">&#39;&quot;]&#39;</span>).text() || element.find(<span style="color: #0000FF">&#39;option&#39;</span>).first().text();
-            selectedLabel = $(<span style="color: #0000FF">&#39;&lt;i/&gt;&#39;</span>).addClass(<span style="color: #0000FF">&#39;flagstrap-icon flagstrap-&#39;</span> + element.val().toLowerCase()).css(<span style="color: #0000FF">&#39;margin-right&#39;</span>, options.labelMargin);
-
-            <span style="color: #008800; font-style: italic">// Build the wrapper</span>
-            <span style="color: #000080; font-weight: bold">var</span> wrapper = $(<span style="color: #0000FF">&#39;&lt;div/&gt;&#39;</span>)
-                    .addClass(<span style="color: #0000FF">&#39;flagstrap-wrap&#39;</span>)
-                    .css(<span style="color: #0000FF">&#39;display&#39;</span>, <span style="color: #0000FF">&#39;inline-block&#39;</span>)
-                    .css(<span style="color: #0000FF">&#39;position&#39;</span>, <span style="color: #0000FF">&#39;relative&#39;</span>)
-                    .css(<span style="color: #0000FF">&#39;width&#39;</span>, <span style="color: #0000FF">&#39;100%&#39;</span>);
-
-            element.wrap(wrapper);
-
-            <span style="color: #008800; font-style: italic">// Construct the drop down button</span>
-            <span style="color: #000080; font-weight: bold">var</span> buttonLabel = $(<span style="color: #0000FF">&#39;&lt;span/&gt;&#39;</span>)
-                    .addClass(<span style="color: #0000FF">&#39;flagstrap-selected-&#39;</span> + i)
-                    .html(selectedLabel)
-                    .append(selectedText);
-
-            <span style="color: #000080; font-weight: bold">var</span> button = $(<span style="color: #0000FF">&#39;&lt;button/&gt;&#39;</span>)
-                    .attr(<span style="color: #0000FF">&#39;data-toggle&#39;</span>, <span style="color: #0000FF">&#39;dropdown&#39;</span>)
-                    .addClass(<span style="color: #0000FF">&#39;btn &#39;</span> + options.buttonType + <span style="color: #0000FF">&#39; &#39;</span> + options.buttonSize + <span style="color: #0000FF">&#39; dropdown-toggle&#39;</span>)
-                    .html(buttonLabel);
-
-            $(<span style="color: #0000FF">&#39;&lt;span/&gt;&#39;</span>)
-                    .addClass(<span style="color: #0000FF">&#39;caret&#39;</span>)
-                    .css(<span style="color: #0000FF">&#39;margin-left&#39;</span>, <span style="color: #0000FF">&#39;10px&#39;</span>)
-                    .insertAfter(buttonLabel);
-
-            <span style="color: #008800; font-style: italic">// Assemble the drop down list items element</span>
-            <span style="color: #000080; font-weight: bold">var</span> items = $(<span style="color: #0000FF">&#39;&lt;ul/&gt;&#39;</span>)
-                    .attr(<span style="color: #0000FF">&#39;id&#39;</span>, elementId)
-                    .addClass(<span style="color: #0000FF">&#39;dropdown-menu&#39;</span>);
-
-            <span style="color: #000080; font-weight: bold">if</span> (options.scrollable) {
-                items.css(<span style="color: #0000FF">&#39;height&#39;</span>, <span style="color: #0000FF">&#39;auto&#39;</span>)
-                        .css(<span style="color: #0000FF">&#39;max-height&#39;</span>, <span style="color: #0000FF">&#39;250px&#39;</span>)
-                        .css(<span style="color: #0000FF">&#39;overflow-x&#39;</span>, <span style="color: #0000FF">&#39;hidden&#39;</span>);
-            }
-
-            <span style="color: #008800; font-style: italic">// Insert the drop down button and item list</span>
-            element.before(button).before(items);
-
-            <span style="color: #008800; font-style: italic">// Populate the item list</span>
-            element.find(<span style="color: #0000FF">&#39;option&#39;</span>).each(<span style="color: #000080; font-weight: bold">function</span> () {
-
-                <span style="color: #008800; font-style: italic">// Get original select option values and labels</span>
-                <span style="color: #000080; font-weight: bold">var</span> text = $(<span style="color: #000080; font-weight: bold">this</span>).text();
-                <span style="color: #000080; font-weight: bold">var</span> value = $(<span style="color: #000080; font-weight: bold">this</span>).val();
-
-                <span style="color: #008800; font-style: italic">// Build the flag icon</span>
-                <span style="color: #000080; font-weight: bold">var</span> flagIcon = $(<span style="color: #0000FF">&#39;&lt;i/&gt;&#39;</span>).addClass(<span style="color: #0000FF">&#39;flagstrap-icon flagstrap-&#39;</span> + value.toLowerCase()).css(<span style="color: #0000FF">&#39;margin-right&#39;</span>, options.labelMargin);
-
-                <span style="color: #008800; font-style: italic">// Build a clickable drop down option item, insert the flag and label, attach click event</span>
-                <span style="color: #000080; font-weight: bold">var</span> flagStrapItem = $(<span style="color: #0000FF">&#39;&lt;a/&gt;&#39;</span>)
-                        .attr(<span style="color: #0000FF">&#39;data-val&#39;</span>, $(<span style="color: #000080; font-weight: bold">this</span>).val())
-                        .html(flagIcon)
-                        .append(text)
-                        .on(<span style="color: #0000FF">&#39;click&#39;</span>, <span style="color: #000080; font-weight: bold">function</span> () {
-                            element.find(<span style="color: #0000FF">&#39;option&#39;</span>).removeAttr(<span style="color: #0000FF">&#39;selected&#39;</span>);
-                            element.find(<span style="color: #0000FF">&#39;option[value=&quot;&#39;</span> + $(<span style="color: #000080; font-weight: bold">this</span>).data(<span style="color: #0000FF">&#39;val&#39;</span>) + <span style="color: #0000FF">&#39;&quot;]&#39;</span>).attr(<span style="color: #0000FF">&quot;selected&quot;</span>, <span style="color: #0000FF">&quot;selected&quot;</span>);
-                            $(<span style="color: #0000FF">&#39;.flagstrap-selected-&#39;</span> + i).html($(<span style="color: #000080; font-weight: bold">this</span>).html());
-                            e.preventDefault();
-                        });
-
-                <span style="color: #008800; font-style: italic">// Make it a list item</span>
-                <span style="color: #000080; font-weight: bold">var</span> listItem = $(<span style="color: #0000FF">&#39;&lt;li/&gt;&#39;</span>).prepend(flagStrapItem);
-
-                <span style="color: #008800; font-style: italic">// Append it to the drop down item list</span>
-                $(<span style="color: #0000FF">&#39;#&#39;</span> + elementId).append(listItem);
-
-            });
-
-            <span style="color: #008800; font-style: italic">// Hide the actual HTML select</span>
-            element.hide();
-
-        });
-
-
-    };
-})
-(jQuery);
-</pre></div>
-
-    <br><br>
 </div>
 
 <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script src="dist/jquery.flagstrap.min.js"></script>
+<script src="../dist/js/jquery.flagstrap.js"></script>
 
 <script>
-    $('.flagstrap').flagStrap({
+    $('#basic').flagStrap();
+
+    $('#options').flagStrap({
         countries: {
             "AU": "Australia",
             "GB": "United Kingdom",
             "US": "United States"
         },
-        settings:{
-            buttonSize: "btn-lg",
-            buttonType: "btn-primary",
-            labelMargin: "20px",
-            scrollable: false,
-            scrollableHeight: "350px"
-        }
+        buttonSize: "btn-sm",
+        buttonType: "btn-info",
+        labelMargin: "10px",
+        scrollable: false,
+        scrollableHeight: "350px"
     });
-</script>
 
+    $('#advanced').flagStrap({
+        buttonSize: "btn-lg",
+        buttonType: "btn-primary",
+        labelMargin: "20px",
+        scrollable: false,
+        scrollableHeight: "350px"
+    });
+
+</script>
 
 </body>
