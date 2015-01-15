@@ -2,6 +2,9 @@
 
 A lightwieght jQuery plugin for creating Bootstrap 3 compatible country select boxes with flags.
 
+###Demo
+http://blazeworx.github.io/flagstrap
+
 ###Usage
 
 ####Basic
