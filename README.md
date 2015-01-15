@@ -24,7 +24,7 @@ A lightwieght jQuery plugin for creating Bootstrap 3 compatible country select b
 ####Options
 
 #####Using Data Attributes
-This example will create a Flagstrap Dropdown giving the input field the name of `country` with all countries available and `Germany` pre selected and in a `scrollable` dropdown with `max-height` of 250px. 
+This example will create a Flagstrap Dropdown giving the input field the name of `country` with all countries available and `Germany` pre selected and in a `scrollable` dropdown with `max-height` of `250px`. 
 
 ```html
 <form>
@@ -126,10 +126,10 @@ This example will create a Flagstrap Dropdown giving the input field the name of
         <td>`max-height` for the scrollable drop down</td>
     </tr>
     <tr>
-        <td>countries *(optional)*</td>
+        <td>countries (optional)</td>
         <td>object</td>
         <td>(all)</td>
-        <td>Only show specific countries<br>Example: {"GB": "United Kingdom", "US": "United States"} will only show the USA and UK.</td>
+        <td>Only show specific countries<br>Example:<br><br>{"GB": "United Kingdom", "US": "United States"}<br><br>will only show the USA and UK.</td>
     </tr>
     </tbody>
 </table>
