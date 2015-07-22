@@ -99,6 +99,12 @@ This example will create a Flagstrap Dropdown giving the input field the name of
         <td>the `name` attribute for the actual `select` input</td>
     </tr>
     <tr>
+        <td>inputId</td>
+        <td>string</td>
+        <td>uniquely generated</td>
+        <td>the `id` attribute for the actual `select` input</td>
+    </tr>
+    <tr>
         <td>buttonSize</td>
         <td>string</td>
         <td>"btn-md"</td>

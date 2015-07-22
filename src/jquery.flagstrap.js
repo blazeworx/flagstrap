@@ -279,6 +279,11 @@
                 plugin.countries = plugin.settings.countries;
             }
 
+            if (undefined !== plugin.settings.inputId) {
+                htmlSelectId = plugin.settings.inputId;
+                htmlSelect = '#' + htmlSelectId;
+            }
+
             // Build HTML Select, Construct the drop down button, Assemble the drop down list items element and insert
             $container
                 .addClass('flagstrap')
