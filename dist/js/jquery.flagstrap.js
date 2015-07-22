@@ -1,5 +1,5 @@
 /*
- *  FlagStrap - v3.3.5
+ *  FlagStrap - v1.0
  *  A lightwieght jQuery plugin for creating Bootstrap 3 compatible country select boxes with flags.
  *  http://www.blazeworx.com/flagstrap
  *
