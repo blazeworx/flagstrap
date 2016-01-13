@@ -9,6 +9,7 @@
     };
 
     var countries = {
+        "NONE": "Select a country",
         "AF": "Afghanistan",
         "AL": "Albania",
         "DZ": "Algeria",

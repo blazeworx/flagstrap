@@ -11,6 +11,10 @@
     background: url(flags.png) no-repeat
 }
 
+.flagstrap-icon.flagstrap-none {
+    background-position: 0 0
+}
+
 .flagstrap-icon.flagstrap-ad {
     background-position: -16px 0
 }
