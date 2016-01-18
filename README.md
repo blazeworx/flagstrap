@@ -79,6 +79,10 @@ This example will create a Flagstrap Dropdown giving the input field the name of
         scrollableHeight: "350px",
         onSelect: function(value, element) {
             //
+        },
+        placeholder: {
+            value: "",
+            text: "Please select a country"
         }
     });
 </script>
@@ -148,6 +152,12 @@ This example will create a Flagstrap Dropdown giving the input field the name of
         <td>function</td>
         <td>null</td>
         <td>This callback gets called each time the select is changed. It receives two parameters, the new value, and the select element.</td>
+     </tr>
+     <tr>
+        <td>placeholder</td>
+        <td>bool|object</td>
+        <td>{value: "", text: "Please select a country"}</td>
+        <td>Set the placeholder value and text. To disable the placeholder define as (boolean) false.</td>
     </tr>
     </tbody>
 </table>
