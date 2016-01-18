@@ -27,7 +27,7 @@ http://blazeworx.github.io/flagstrap
 ####Options
 
 #####Using Data Attributes
-This example will create a Flagstrap Dropdown giving the input field the name of `country` with all countries available and `Germany` pre selected and in a `scrollable` dropdown with `max-height` of `250px`. 
+This example will create a Flagstrap Dropdown giving the input field the name of `country` with all countries available and `Germany` pre selected and in a `scrollable` dropdown with `max-height` of `250px`.
 
 ```html
 <form>
@@ -38,7 +38,7 @@ This example will create a Flagstrap Dropdown giving the input field the name of
              data-selected-country="DE"
              data-button-size="btn-md"
              data-button-type="btn-default"
-             data-scrollable-height="250px" 
+             data-scrollable-height="250px"
              data-scrollable="true">
         </div>
     </div>
@@ -52,7 +52,7 @@ This example will create a Flagstrap Dropdown giving the input field the name of
 ```
 
 #####Using Instance Options
-This example will create a Flagstrap Dropdown giving the input field the name of `country` with only `Australia`, `USA` and `Canada` as available options and no pre selection. 
+This example will create a Flagstrap Dropdown giving the input field the name of `country` with only `Australia`, `USA` and `Canada` as available options and no pre selection.
 
 ```html
 <form class="form-horizontal">
@@ -76,7 +76,11 @@ This example will create a Flagstrap Dropdown giving the input field the name of
         buttonType: "btn-primary",
         labelMargin: "20px",
         scrollable: false,
-        scrollableHeight: "350px"
+        scrollableHeight: "350px",
+        placeholder: {
+            value: "",
+            text: "Please select a country"
+        }
     });
 </script>
 ```
@@ -139,6 +143,12 @@ This example will create a Flagstrap Dropdown giving the input field the name of
         <td>object</td>
         <td>(all)</td>
         <td>Only show specific countries<br>Example:<br><br>{"GB": "United Kingdom", "US": "United States"}<br><br>will only show the USA and UK.</td>
+    </tr>
+    <tr>
+        <td>placeholder</td>
+        <td>bool|object</td>
+        <td>{value: "", text: "Please select a country"}</td>
+        <td>Set the placeholder value and text. To disable the placeholder define as (boolean) false.</td>
     </tr>
     </tbody>
 </table>
