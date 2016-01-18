@@ -77,6 +77,9 @@ This example will create a Flagstrap Dropdown giving the input field the name of
         labelMargin: "20px",
         scrollable: false,
         scrollableHeight: "350px",
+        onSelect: function(value, element) {
+            //
+        },
         placeholder: {
             value: "",
             text: "Please select a country"
@@ -145,6 +148,12 @@ This example will create a Flagstrap Dropdown giving the input field the name of
         <td>Only show specific countries<br>Example:<br><br>{"GB": "United Kingdom", "US": "United States"}<br><br>will only show the USA and UK.</td>
     </tr>
     <tr>
+        <td>onSelect (optional)</td>
+        <td>function</td>
+        <td>null</td>
+        <td>This callback gets called each time the select is changed. It receives two parameters, the new value, and the select element.</td>
+     </tr>
+     <tr>
         <td>placeholder</td>
         <td>bool|object</td>
         <td>{value: "", text: "Please select a country"}</td>

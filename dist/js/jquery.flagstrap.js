@@ -6,6 +6,14 @@
  *  Made by Alex Carter
  *  Under MIT License
  */
+/*
+ *  FlagStrap - v1.0
+ *  A lightwieght jQuery plugin for creating Bootstrap 3 compatible country select boxes with flags.
+ *  http://www.blazeworx.com/flagstrap
+ *
+ *  Made by Alex Carter
+ *  Under MIT License
+ */
 (function ($) {
 
     var defaults = {
@@ -302,6 +310,14 @@
                 .append(buildHtmlSelect)
                 .append(buildDropDownButton)
                 .append(buildDropDownButtonItemList);
+
+            // Check to see if the onSelect callback method is assigned / callable, bind the change event for broadcast
+            if (options.onSelect !== undefined && options.onSelect instanceof Function) {
+              $(htmlSelect).change(function(event) {
+                var element = this;
+                options.onSelect($(element).val(), element);
+              });
+            }
 
             // Hide the actual HTML select
             $(htmlSelect).hide();
