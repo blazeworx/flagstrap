@@ -5,7 +5,11 @@
         buttonType: "btn-default",
         labelMargin: "10px",
         scrollable: true,
-        scrollableHeight: "250px"
+        scrollableHeight: "250px",
+        placeholder: {
+          value: '',
+          text: 'Please select country'
+        }
     };
 
     var countries = {
@@ -310,6 +314,13 @@
                 htmlSelectElement.append($('<option>', optionAttributes).text(country));
             });
 
+            if (plugin.settings.placeholder !== false) {
+              htmlSelectElement.prepend($('<option>', {
+                  value: plugin.settings.placeholder.value,
+                  text:  plugin.settings.placeholder.text
+              }));
+            }
+
             return htmlSelectElement;
         };
 
@@ -321,7 +332,11 @@
             selectedText = plugin.selected.text || selectedText;
             selectedValue = plugin.selected.value || selectedValue;
 
-            var $selectedLabel = $('<i/>').addClass('flagstrap-icon flagstrap-' + selectedValue.toLowerCase()).css('margin-right', plugin.settings.labelMargin);
+            if (selectedValue !== plugin.settings.placeholder.value) {
+              var $selectedLabel = $('<i/>').addClass('flagstrap-icon flagstrap-' + selectedValue.toLowerCase()).css('margin-right', plugin.settings.labelMargin);
+            } else {
+              var $selectedLabel = $('<i/>').addClass('flagstrap-icon flagstrap-placeholder');
+            }
 
             var buttonLabel = $('<span/>')
                 .addClass('flagstrap-selected-' + uniqueId)
@@ -364,7 +379,12 @@
                 var value = $(this).val();
 
                 // Build the flag icon
-                var flagIcon = $('<i/>').addClass('flagstrap-icon flagstrap-' + value.toLowerCase()).css('margin-right', plugin.settings.labelMargin);
+                if (value !== plugin.settings.placeholder.value) {
+                  var flagIcon = $('<i/>').addClass('flagstrap-icon flagstrap-' + value.toLowerCase()).css('margin-right', plugin.settings.labelMargin);
+                } else {
+                  var flagIcon = null;
+                }
+
 
                 // Build a clickable drop down option item, insert the flag and label, attach click event
                 var flagStrapItem = $('<a/>')
