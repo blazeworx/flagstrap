@@ -23,8 +23,8 @@
         scrollable: true,
         scrollableHeight: "250px",
         placeholder: {
-          value: '',
-          text: 'Please select country'
+            value: '',
+            text: 'Please select country'
         }
     };
 
@@ -313,11 +313,11 @@
                 .append(buildDropDownButtonItemList);
 
             // Check to see if the onSelect callback method is assigned / callable, bind the change event for broadcast
-            if (options.onSelect !== undefined && options.onSelect instanceof Function) {
-              $(htmlSelect).change(function(event) {
-                var element = this;
-                options.onSelect($(element).val(), element);
-              });
+            if (plugin.settings.onSelect !== undefined && plugin.settings.onSelect instanceof Function) {
+                $(htmlSelect).change(function (event) {
+                    var element = this;
+                    options.onSelect($(element).val(), element);
+                });
             }
 
             // Hide the actual HTML select
@@ -340,10 +340,10 @@
             });
 
             if (plugin.settings.placeholder !== false) {
-              htmlSelectElement.prepend($('<option>', {
-                  value: plugin.settings.placeholder.value,
-                  text:  plugin.settings.placeholder.text
-              }));
+                htmlSelectElement.prepend($('<option>', {
+                    value: plugin.settings.placeholder.value,
+                    text: plugin.settings.placeholder.text
+                }));
             }
 
             return htmlSelectElement;
@@ -358,9 +358,9 @@
             selectedValue = plugin.selected.value || selectedValue;
 
             if (selectedValue !== plugin.settings.placeholder.value) {
-              var $selectedLabel = $('<i/>').addClass('flagstrap-icon flagstrap-' + selectedValue.toLowerCase()).css('margin-right', plugin.settings.labelMargin);
+                var $selectedLabel = $('<i/>').addClass('flagstrap-icon flagstrap-' + selectedValue.toLowerCase()).css('margin-right', plugin.settings.labelMargin);
             } else {
-              var $selectedLabel = $('<i/>').addClass('flagstrap-icon flagstrap-placeholder');
+                var $selectedLabel = $('<i/>').addClass('flagstrap-icon flagstrap-placeholder');
             }
 
             var buttonLabel = $('<span/>')
@@ -405,9 +405,9 @@
 
                 // Build the flag icon
                 if (value !== plugin.settings.placeholder.value) {
-                  var flagIcon = $('<i/>').addClass('flagstrap-icon flagstrap-' + value.toLowerCase()).css('margin-right', plugin.settings.labelMargin);
+                    var flagIcon = $('<i/>').addClass('flagstrap-icon flagstrap-' + value.toLowerCase()).css('margin-right', plugin.settings.labelMargin);
                 } else {
-                  var flagIcon = null;
+                    var flagIcon = null;
                 }
 
 
