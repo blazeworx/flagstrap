@@ -78,10 +78,10 @@
         "CD": "Congo, the Democratic Republic of the",
         "CK": "Cook Islands",
         "CR": "Costa Rica",
-        "CI": "CÃ´te d'Ivoire",
+        "CI": "C" + "&ocirc;" + "te d'Ivoire",
         "HR": "Croatia",
         "CU": "Cuba",
-        "CW": "CuraÃ§ao",
+        "CW": "Cura" + "&ccedil;" + "ao",
         "CY": "Cyprus",
         "CZ": "Czech Republic",
         "DK": "Denmark",
@@ -204,7 +204,7 @@
         "PT": "Portugal",
         "PR": "Puerto Rico",
         "QA": "Qatar",
-        "RE": "RÃ©union",
+        "RE": "R" + "&eacute;" + "union",
         "RO": "Romania",
         "RU": "Russian Federation",
         "RW": "Rwanda",
@@ -272,6 +272,7 @@
         "ZM": "Zambia",
         "ZW": "Zimbabwe"
     };
+
     $.flagStrap = function (element, options, i) {
 
         var plugin = this;
