@@ -5,58 +5,310 @@
     <title>Flagstrap Demo</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="../dist/css/flags.css" rel="stylesheet">
-</head>
-<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
+    <style>
+        /* Tomorrow Theme */
+        /* Original theme - https://github.com/chriskempson/tomorrow-theme */
+        .prettyprint {
+            background: white;
+            font-family: Menlo, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Consolas, monospace;
+            font-size: 12px;
+            line-height: 1.5;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
 
-<a href="https://github.com/blazeworx/flagstrap"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+        .pln {
+            color: #4d4d4c;
+        }
+
+        @media screen {
+            .str {
+                color: #718c00;
+            }
+
+            .kwd {
+                color: #8959a8;
+            }
+
+            .com {
+                color: #8e908c;
+            }
+
+            .typ {
+                color: #4271ae;
+            }
+
+            .lit {
+                color: #f5871f;
+            }
+
+            .pun {
+                color: #4d4d4c;
+            }
+
+            .opn {
+                color: #4d4d4c;
+            }
+
+            .clo {
+                color: #4d4d4c;
+            }
+
+            .tag {
+                color: #c82829;
+            }
+
+            .atn {
+                color: #f5871f;
+            }
+
+            .atv {
+                color: #3e999f;
+            }
+
+            .dec {
+                color: #f5871f;
+            }
+
+            .var {
+                color: #c82829;
+            }
+
+            .fun {
+                color: #4271ae;
+            }
+        }
+        @media print, projection {
+            .str {
+                color: #006600;
+            }
+
+            .kwd {
+                color: #006;
+                font-weight: bold;
+            }
+
+            .com {
+                color: #600;
+                font-style: italic;
+            }
+
+            .typ {
+                color: #404;
+                font-weight: bold;
+            }
+
+            .lit {
+                color: #004444;
+            }
+
+            .pun, .opn, .clo {
+                color: #444400;
+            }
+
+            .tag {
+                color: #006;
+                font-weight: bold;
+            }
+
+            .atn {
+                color: #440044;
+            }
+
+            .atv {
+                color: #006600;
+            }
+        }
+        /* Specify class=linenums on a pre to get line numbering */
+        ol.linenums {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        /* IE indents via margin-left */
+        li.L0,
+        li.L1,
+        li.L2,
+        li.L3,
+        li.L4,
+        li.L5,
+        li.L6,
+        li.L7,
+        li.L8,
+        li.L9 {
+            /* */
+        }
+
+        /* Alternate shading for lines */
+        li.L1,
+        li.L3,
+        li.L5,
+        li.L7,
+        li.L9 {
+            /* */
+        }
+    </style>
+</head>
+<body onload="prettyPrint()">
+
+<a href="https://github.com/blazeworx/flagstrap">
+    <img style="position: absolute; top: 0; left: 0; border: 0;"
+         src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67"
+         alt="Fork me on GitHub"
+         data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png">
+</a>
 
 <div class="container" style="margin-top:50px;">
-    <h1>FlagStrap v0.3</h1><a href="https://github.com/blazeworx/flagstrap">View on Github</a>
+    <h1>FlagStrap v1.1</h1><a href="https://github.com/blazeworx/flagstrap">View on Github</a>
     <hr>
 
-<form>
-    <div class="form-group">
-        <label>Select Country</label><br>
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <h3>Default
+                <small>No options or data attributes</small>
+            </h3>
+<pre class="prettyprint lang-js">
+$('#basic').flagStrap();
+</pre>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <h3>Result</h3>
 
-        <div id="basic" data-input-name="country"></div>
-    </div>
-</form>
+            <form>
+                <div class="form-group">
+                    <label>Select Country</label><br>
 
-<form>
-    <div class="form-group">
-        <label>Select Country</label><br>
-        <div id="options"
-             data-input-name="country2"
-             data-selected-country="DE">
+                    <div id="basic" data-input-name="country"></div>
+                </div>
+            </form>
         </div>
     </div>
-</form>
 
-<form>
-    <div class="form-group">
-        <label>Select Country</label>
-        <div id="advanced"
-             data-input-name="country3"
-             data-selected-country="CA"
-             data-button-size="btn-lg"
-             data-button-type="btn-warning"
-             data-scrollable="true"
-             data-scrollable-height="250px"
-             data-countries='{"US": "United States","CA": "Canada"}'>
+    <hr>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <h3>Example
+                <small>Customer default value</small>
+            </h3>
+<pre class="prettyprint lang-js">
+$('#origin').flagStrap({
+    placeholder: {
+        value: "",
+        text: "Country of origin"
+    }
+});
+</pre>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <h3>Result</h3>
+
+            <form>
+                <div class="form-group">
+                    <label>Where did these items originate from?</label><br>
+                    <div id="origin" data-input-name="origin"></div>
+                </div>
+            </form>
         </div>
     </div>
-</form>
 
+    <hr>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <h3>Example
+                <small>Using data attributes to pre-select a country</small>
+            </h3>
+<pre class="prettyprint lang-js">
+ $('#options').flagStrap({
+    countries: {
+        "AU": "Australia",
+        "GB": "United Kingdom",
+        "US": "United States"
+    },
+    buttonSize: "btn-sm",
+    buttonType: "btn-info",
+    labelMargin: "10px",
+    scrollable: false,
+    scrollableHeight: "350px"
+});
+</pre>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <h3>Result</h3>
+
+            <form>
+                <div class="form-group">
+                    <label>Select Country</label><br>
+
+                    <div id="options"
+                         data-input-name="country2"
+                         data-selected-country="GB">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <h3>Example
+                <small>Custom onChange event</small>
+            </h3>
+<pre class="prettyprint lang-js">
+$('#advanced').flagStrap({
+    buttonSize: "btn-lg",
+    buttonType: "btn-primary",
+    labelMargin: "20px",
+    scrollable: false,
+    scrollableHeight: "350px",
+    onSelect: function (value, element) {
+        alert(value);
+        console.log(element);
+    }
+});
+</pre>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <h3>Result</h3>
+
+            <form>
+                <div class="form-group">
+                    <label>Select Country</label>
+
+                    <div id="advanced"
+                         data-input-name="country3"
+                         data-selected-country="CA"
+                         data-button-size="btn-lg"
+                         data-button-type="btn-warning"
+                         data-scrollable="true"
+                         data-scrollable-height="250px"
+                         data-countries='{"US": "United States","CA": "Canada"}'>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="../dist/js/jquery.flagstrap.js"></script>
 
 <script>
     $('#basic').flagStrap();
+
+    $('#origin').flagStrap({
+        placeholder: {
+            value: "",
+            text: "Country of origin"
+        }
+    });
 
     $('#options').flagStrap({
         countries: {
@@ -76,7 +328,11 @@
         buttonType: "btn-primary",
         labelMargin: "20px",
         scrollable: false,
-        scrollableHeight: "350px"
+        scrollableHeight: "350px",
+        onSelect: function (value, element) {
+            alert(value);
+            console.log(element);
+        }
     });
 
 </script>

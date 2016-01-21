@@ -161,3 +161,10 @@ This example will create a Flagstrap Dropdown giving the input field the name of
     </tr>
     </tbody>
 </table>
+
+### Contributors
+
+This project was created by Alex Carter. I owe many thanks to the following people who have helped make flagstrap even better.
+
+* [Matthew Machuga](https://github.com/machuga)
+* [TJ Miller](https://github.com/sixlive)
