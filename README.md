@@ -90,6 +90,22 @@ This example will create a Flagstrap Dropdown giving the input field the name of
 </script>
 ```
 
+This example will create a Flagstrap Dropdown using an array of objects instead, giving the plugin users the possibility to specify the order of the countries. Arrays can be sorted but objects not.
+
+United states will be first in the list in this case.
+
+```html
+<script>
+    $('#flagstrap3').flagStrap({
+        countries: [
+            {"US": "United States"},
+            {"AU": "Australia"},
+            {"GB": "United Kingdom"}
+        ]
+    });
+</script>
+```
+
 ### Options
 <table class="table table-bordered table-striped">
     <thead>
