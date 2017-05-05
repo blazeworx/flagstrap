@@ -30,9 +30,11 @@ module.exports = function(grunt) {
 
         // Lint definitions
         jshint: {
-            files: ["src/jquery.boilerplate.js"],
+            files: ["src/jquery.flagstrap.js"],
+            path: "src/jquery.flagstrap.js",
             options: {
-                jshintrc: ".jshintrc"
+                jshintrc: ".jshintrc",
+                reporterOutput: ""
             }
         },
 
