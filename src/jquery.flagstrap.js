@@ -1,3 +1,11 @@
+/*
+ *  FlagStrap - v1.0
+ *  A lightwieght jQuery plugin for creating Bootstrap 3 compatible country select boxes with flags.
+ *  http://www.blazeworx.com/flagstrap
+ *
+ *  Made by Alex Carter
+ *  Under MIT License
+ */
 (function ($) {
 
     var defaults = {
@@ -9,7 +17,8 @@
         placeholder: {
             value: '',
             text: 'Please select country'
-        }
+        },
+        selectedCountry: ''
     };
 
     var countries = {
@@ -264,8 +273,8 @@
         var uniqueId = generateId(8);
 
         plugin.countries = {};
-        plugin.selected = {value: null, text: null};
-        plugin.settings = {inputName: 'country-' + uniqueId};
+        plugin.selected = { value: null, text: null };
+        plugin.settings = { inputName: 'country-' + uniqueId };
 
         var $container = $(element);
         var htmlSelectId = 'flagstrap-' + uniqueId;
@@ -313,21 +322,22 @@
             var htmlSelectElement = $('<select/>').attr('id', htmlSelectId).attr('name', plugin.settings.inputName);
 
             $.each(plugin.countries, function (code, country) {
-                var optionAttributes = {value: code};
+                var optionAttributes = { value: code };
                 if (plugin.settings.selectedCountry !== undefined) {
                     if (plugin.settings.selectedCountry === code) {
-                        optionAttributes = {value: code, selected: "selected"};
-                        plugin.selected = {value: code, text: country}
+                        optionAttributes = { value: code, selected: "selected" };
+                        plugin.selected = { value: code, text: country }
                     }
                 }
                 htmlSelectElement.append($('<option>', optionAttributes).text(country));
             });
 
             if (plugin.settings.placeholder !== false) {
-                htmlSelectElement.prepend($('<option>', {
+                htmlSelectElement.prepend($('<option selected>', {
                     value: plugin.settings.placeholder.value,
-                    text: plugin.settings.placeholder.text
+                    text: plugin.settings.placeholder.text,
                 }));
+                plugin.selected = { value: plugin.settings.placeholder.value, text: plugin.settings.placeholder.text }
             }
 
             return htmlSelectElement;
