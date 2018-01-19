@@ -4,12 +4,12 @@ A lightwieght jQuery plugin for creating Bootstrap 3 compatible country select b
 
 ![Flagstrap Demo](http://blazeworx.com/flagstrap.gif)
 
-###Demo
+### Demo
 http://blazeworx.github.io/flagstrap
 
-###Usage
+### Usage
 
-####Basic
+#### Basic
 
 ```html
 <form class="form-horizontal">
@@ -26,9 +26,9 @@ http://blazeworx.github.io/flagstrap
 </script>
 ```
 
-####Options
+#### Options
 
-#####Using Data Attributes
+##### Using Data Attributes
 This example will create a Flagstrap Dropdown giving the input field the name of `country` with all countries available and `Germany` pre selected and in a `scrollable` dropdown with `max-height` of `250px`.
 
 ```html
@@ -53,7 +53,7 @@ This example will create a Flagstrap Dropdown giving the input field the name of
 </script>
 ```
 
-#####Using Instance Options
+##### Using Instance Options
 This example will create a Flagstrap Dropdown giving the input field the name of `country` with only `Australia`, `USA` and `Canada` as available options and no pre selection.
 
 ```html
