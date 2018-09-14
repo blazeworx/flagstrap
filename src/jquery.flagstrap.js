@@ -318,6 +318,26 @@
 
         };
 
+        /**
+         * Acts like the jQuery val() but on the actual flagStrap object not the underlying
+         * select. For this reason it also does not fire the change event, as in jQuery val() does
+         * not cause triggering over underlying change events
+         * 
+         * @param {string} country_code 
+         */
+        plugin.val = function(country_code) {
+            // set the underlying select to the new value
+            $(htmlSelect).val(country_code);
+            // update the UI of the flag widget to show the new country selection
+            var html = '';
+            if ( country_code == plugin.settings.placeholder.value ) {
+                html = '<i class="flagstrap-icon flagstrap-placeholder"></i> ' + plugin.settings.placeholder.text;
+            } else {
+                html = $container.find('li a[data-val='+country_code+']').html();
+            }
+            $('.flagstrap-selected-' + uniqueId).html( html );
+        }
+
         var buildHtmlSelect = function () {
             var htmlSelectElement = $('<select/>').attr('id', htmlSelectId).attr('name', plugin.settings.inputName);
 
@@ -449,8 +469,13 @@
     $.fn.flagStrap = function (options) {
 
         return this.each(function (i) {
-            if ($(this).data('flagStrap') === undefined) {
-                $(this).data('flagStrap', new $.flagStrap(this, options, i));
+            
+            if ( typeof options === 'string' && $(this).data('flagStrap') !== undefined ) {
+                $(this).data('flagStrap').val(options);
+            } else {
+                if ($(this).data('flagStrap') === undefined) {
+                    $(this).data('flagStrap', new $.flagStrap(this, options, i));
+                }
             }
         });
 
