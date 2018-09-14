@@ -90,6 +90,19 @@ This example will create a Flagstrap Dropdown giving the input field the name of
 </script>
 ```
 
+##### Setting value of widget after creation
+You cannot set the value of the widget using the val() method on the underlying select, as this does not notify the plugin of the change.
+
+In order change the underlying value of the select and the UI display of the flag widget by passing a string in options instead of an object. The string passed should be the country code of the country to select.
+
+The example below will take an already setup flagStrap widget, and change its selected value to the United States.
+
+```html
+<script>
+    $('#flagstrap3').flagStrap('US');
+</script>
+```
+
 ### Options
 <table class="table table-bordered table-striped">
     <thead>
