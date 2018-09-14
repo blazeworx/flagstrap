@@ -329,7 +329,13 @@
             // set the underlying select to the new value
             $(htmlSelect).val(country_code);
             // update the UI of the flag widget to show the new country selection
-            $('.flagstrap-selected-' + uniqueId).html( $container.find('li a[data-val='+country_code+']').html() );
+            var html = '';
+            if ( country_code == plugin.settings.placeholder.value ) {
+                html = '<i class="flagstrap-icon flagstrap-placeholder"></i> ' + plugin.settings.placeholder.text;
+            } else {
+                html = $container.find('li a[data-val='+country_code+']').html();
+            }
+            $('.flagstrap-selected-' + uniqueId).html( html );
         }
 
         var buildHtmlSelect = function () {
