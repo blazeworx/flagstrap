@@ -90,6 +90,19 @@ This example will create a Flagstrap Dropdown giving the input field the name of
 </script>
 ```
 
+##### Setting value of widget after creation
+You cannot set the value of the widget using the val() method on the underlying select, as this does not notify the plugin of the change.
+
+Passing a string value to the plugin instead of an object will change value of the underlying select and update the UI display. The string passed should be the country code of the country to select.
+
+The example below will take the flagstrap widget created in the example above and change its selected value to the United States.
+
+```html
+<script>
+    $('#flagstrap3').flagStrap('US');
+</script>
+```
+
 ### Options
 <table class="table table-bordered table-striped">
     <thead>
@@ -154,8 +167,14 @@ This example will create a Flagstrap Dropdown giving the input field the name of
         <td>function</td>
         <td>null</td>
         <td>This callback gets called each time the select is changed. It receives two parameters, the new value, and the select element.</td>
-     </tr>
-     <tr>
+    </tr>
+    <tr>
+        <td>onDomReady (optional)</td>
+        <td>function</td>
+        <td>null</td>
+        <td>This callback gets called as the last thing, before the plugin returns, thus multiple selects can be rendered and when they're all done, this is called.</td>
+    </tr>
+    <tr>
         <td>placeholder</td>
         <td>bool|object</td>
         <td>{value: "", text: "Please select a country"}</td>
