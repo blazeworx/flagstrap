@@ -16,6 +16,10 @@
   display: none
 }
 
+.flagstrap ul li {
+    cursor: pointer;
+}
+
 .flagstrap-icon.flagstrap-ad {
     background-position: -16px 0
 }

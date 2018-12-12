@@ -103,6 +103,28 @@ The example below will take the flagstrap widget created in the example above an
 </script>
 ```
 
+##### Making it searchable
+
+You can probably use any search plugin you like, but here's how you would do it using https://github.com/stidges/jquery-searchable.
+
+```html
+<script>
+    $('#flagstrap4').flagStrap({
+        searchable: true,
+        searchPlaceholder: 'Type to search for countries...',
+        onDomReady: function() {
+            $('#flagstrap4 ul').searchable({
+                selector: 'li',
+                childSelector: 'a',
+                searchField: '#flagstrap4 input:first',
+                searchType: 'default'
+            })
+        }
+    });
+</script>
+```
+
+
 ### Options
 <table class="table table-bordered table-striped">
     <thead>
@@ -157,6 +179,18 @@ The example below will take the flagstrap widget created in the example above an
         <td>`max-height` for the scrollable drop down</td>
     </tr>
     <tr>
+        <td>searchable</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Use an input field along with the button. This field has no search functionality - you'd have to use an actual search plugin like https://github.com/stidges/jquery-searchable</td>
+    </tr>
+    <tr>
+        <td>searchPlaceholder</td>
+        <td>string</td>
+        <td>"Search"</td>
+        <td>Placeholder text in the search input field.</td>
+    </tr>
+    <tr>
         <td>countries (optional)</td>
         <td>object</td>
         <td>(all)</td>
@@ -172,7 +206,7 @@ The example below will take the flagstrap widget created in the example above an
         <td>onDomReady (optional)</td>
         <td>function</td>
         <td>null</td>
-        <td>This callback gets called as the last thing, before the plugin returns, thus multiple selects can be rendered and when they're all done, this is called.</td>
+        <td>This callback gets called as the last thing, before the plugin returns.</td>
     </tr>
     <tr>
         <td>placeholder</td>
@@ -189,3 +223,4 @@ This project was created by Alex Carter. I owe many thanks to the following peop
 
 * [Matthew Machuga](https://github.com/machuga)
 * [TJ Miller](https://github.com/sixlive)
+* [Mads Jensen](https://github.com/sjoller)

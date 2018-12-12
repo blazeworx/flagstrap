@@ -15,6 +15,8 @@
         labelMargin: "10px",
         scrollable: true,
         scrollableHeight: "250px",
+        searchable: false,
+        searchPlaceholder: 'Search',
         placeholder: {
             value: '',
             text: 'Please select country'
@@ -268,14 +270,13 @@
     };
 
     $.flagStrap = function (element, options, i) {
-
         let plugin = this;
 
         let uniqueId = generateId(8);
 
         plugin.countries = {};
-        plugin.selected = { value: null, text: null };
-        plugin.settings = { inputName: 'country-' + uniqueId };
+        plugin.selected = {value: null, text: null};
+        plugin.settings = {inputName: 'country-' + uniqueId};
 
         let $container = $(element);
         let htmlSelectId = 'flagstrap-' + uniqueId;
@@ -300,11 +301,20 @@
             }
 
             // Build HTML Select, Construct the drop down button, Assemble the drop down list items element and insert
-            $container
-                .addClass('flagstrap')
-                .append(buildHtmlSelect)
-                .append(buildDropDownButton)
-                .append(buildDropDownButtonItemList);
+            if (plugin.settings.searchable === true) {
+                $container
+                    .addClass('flagstrap')
+                    .append(buildHtmlSelect)
+                    .append(buildSearchDropDown)
+                    .append(buildDropDownButtonItemList);
+            }
+            else {
+                $container
+                    .addClass('flagstrap')
+                    .append(buildHtmlSelect)
+                    .append(buildDropDownButton)
+                    .append(buildDropDownButtonItemList);
+            }
 
             // Check to see if the onSelect callback method is assigned / callable, bind the change event for broadcast
             if (plugin.settings.onSelect !== undefined && plugin.settings.onSelect instanceof Function) {
@@ -319,15 +329,28 @@
 
         };
 
+        plugin.val = function (country_code) {
+            // set the underlying select to the new value
+            $(htmlSelect).val(country_code);
+            // update the UI of the flag widget to show the new country selection
+            let html = '';
+            if ( country_code === plugin.settings.placeholder.value ) {
+                html = '<i class="flagstrap-icon flagstrap-placeholder"></i> ' + plugin.settings.placeholder.text;
+            } else {
+                html = $container.find('li a[data-val='+country_code+']').html();
+            }
+            $('.flagstrap-selected-' + uniqueId).html( html );
+        };
+
         let buildHtmlSelect = function () {
             let htmlSelectElement = $('<select/>').attr('id', htmlSelectId).attr('name', plugin.settings.inputName);
 
             $.each(plugin.countries, function (code, country) {
-                let optionAttributes = { value: code };
+                let optionAttributes = {value: code};
                 if (plugin.settings.selectedCountry !== undefined) {
                     if (plugin.settings.selectedCountry === code) {
-                        optionAttributes = { value: code, selected: "selected" };
-                        plugin.selected = { value: code, text: country }
+                        optionAttributes = {value: code, selected: "selected"};
+                        plugin.selected = {value: code, text: country}
                     }
                 }
                 htmlSelectElement.append($('<option>', optionAttributes).text(country));
@@ -338,7 +361,7 @@
                     value: plugin.settings.placeholder.value,
                     text: plugin.settings.placeholder.text,
                 }));
-                plugin.selected = { value: plugin.settings.placeholder.value, text: plugin.settings.placeholder.text }
+                plugin.selected = {value: plugin.settings.placeholder.value, text: plugin.settings.placeholder.text}
             }
 
             return htmlSelectElement;
@@ -380,6 +403,61 @@
 
             return button;
 
+        };
+
+        let buildSearchDropDown = function () {
+
+            let firstOption = $(htmlSelect + ' option:first-child');
+            let selectedText = firstOption.text();
+            let selectedValue = firstOption.val();
+            let selectedLabel = $('<i/>').addClass('flagstrap-icon flagstrap-placeholder');
+
+            selectedText = plugin.selected.text || selectedText;
+            selectedValue = plugin.selected.value || selectedValue;
+
+            if (selectedValue !== plugin.settings.placeholder.value) {
+                selectedLabel = $('<i/>').addClass('flagstrap-icon flagstrap-' + selectedValue.toLowerCase()).css('margin-right', plugin.settings.labelMargin);
+            }
+
+            let caret = $('<span/>')
+                .addClass('caret')
+                .css('margin-left', plugin.settings.labelMargin);
+
+            let buttonLabel = $('<span/>')
+                .addClass('flagstrap-selected-' + uniqueId)
+                .html(selectedLabel)
+                .append(selectedText)
+                .append(caret);
+
+            let searchInput = $('<input/>')
+                .attr('type', 'text')
+                .attr('id', 'flagstrap-search-' + uniqueId)
+                .attr('placeholder', plugin.settings.searchPlaceholder)
+                .addClass('form-control')
+                .on('focus', function (e) {
+                    $('#flagstrap-drop-down-' + uniqueId + '-list').show();
+                });
+
+            let button = $('<button/>')
+                .attr('type', 'button')
+                .attr('data-toggle', 'dropdown')
+                .attr('id', 'flagstrap-drop-down-' + uniqueId)
+                .addClass('btn ' + plugin.settings.buttonType + ' ' + plugin.settings.buttonSize + ' dropdown-toggle')
+                .on('click', function (e) {
+                    $('#flagstrap-drop-down-' + uniqueId + '-list').toggle();
+                })
+                .html(buttonLabel);
+
+            let inputGroupBtn = $('<div/>')
+                .addClass('input-group-btn')
+                .append(button);
+
+            let search = $('<div/>')
+                .addClass('input-group')
+                .append(searchInput)
+                .append(inputGroupBtn)
+
+            return search;
         };
 
         let buildDropDownButtonItemList = function () {
@@ -446,17 +524,27 @@
         }
 
         plugin.init();
-
     };
 
     $.fn.flagStrap = function (options) {
 
-        return this.each(function (i) {
-            if ($(this).data('flagStrap') === undefined) {
-                $(this).data('flagStrap', new $.flagStrap(this, options, i));
+        let res = this.each(function (i) {
+
+            if (typeof options === 'string' && $(this).data('flagStrap') !== undefined) {
+                $(this).data('flagStrap').val(options);
+            }
+            else {
+                if ($(this).data('flagStrap') === undefined) {
+                    $(this).data('flagStrap', new $.flagStrap(this, options, i));
+                }
             }
         });
 
+        if (options !== undefined && options.onDomReady !== undefined && options.onDomReady instanceof Function) {
+            options.onDomReady.call(this);
+        }
+
+        return res;
     }
 
 })(jQuery);

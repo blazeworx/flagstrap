@@ -15,6 +15,8 @@
         labelMargin: "10px",
         scrollable: true,
         scrollableHeight: "250px",
+        searchable: false,
+        searchPlaceholder: 'Search',
         placeholder: {
             value: '',
             text: 'Please select country'
@@ -299,11 +301,20 @@
             }
 
             // Build HTML Select, Construct the drop down button, Assemble the drop down list items element and insert
-            $container
-                .addClass('flagstrap')
-                .append(buildHtmlSelect)
-                .append(buildDropDownButton)
-                .append(buildDropDownButtonItemList);
+            if (plugin.settings.searchable === true) {
+                $container
+                    .addClass('flagstrap')
+                    .append(buildHtmlSelect)
+                    .append(buildSearchDropDown)
+                    .append(buildDropDownButtonItemList);
+            }
+            else {
+                $container
+                    .addClass('flagstrap')
+                    .append(buildHtmlSelect)
+                    .append(buildDropDownButton)
+                    .append(buildDropDownButtonItemList);
+            }
 
             // Check to see if the onSelect callback method is assigned / callable, bind the change event for broadcast
             if (plugin.settings.onSelect !== undefined && plugin.settings.onSelect instanceof Function) {
@@ -394,6 +405,61 @@
 
         };
 
+        let buildSearchDropDown = function () {
+
+            let firstOption = $(htmlSelect + ' option:first-child');
+            let selectedText = firstOption.text();
+            let selectedValue = firstOption.val();
+            let selectedLabel = $('<i/>').addClass('flagstrap-icon flagstrap-placeholder');
+
+            selectedText = plugin.selected.text || selectedText;
+            selectedValue = plugin.selected.value || selectedValue;
+
+            if (selectedValue !== plugin.settings.placeholder.value) {
+                selectedLabel = $('<i/>').addClass('flagstrap-icon flagstrap-' + selectedValue.toLowerCase()).css('margin-right', plugin.settings.labelMargin);
+            }
+
+            let caret = $('<span/>')
+                .addClass('caret')
+                .css('margin-left', plugin.settings.labelMargin);
+
+            let buttonLabel = $('<span/>')
+                .addClass('flagstrap-selected-' + uniqueId)
+                .html(selectedLabel)
+                .append(selectedText)
+                .append(caret);
+
+            let searchInput = $('<input/>')
+                .attr('type', 'text')
+                .attr('id', 'flagstrap-search-' + uniqueId)
+                .attr('placeholder', plugin.settings.searchPlaceholder)
+                .addClass('form-control')
+                .on('focus', function (e) {
+                    $('#flagstrap-drop-down-' + uniqueId + '-list').show();
+                });
+
+            let button = $('<button/>')
+                .attr('type', 'button')
+                .attr('data-toggle', 'dropdown')
+                .attr('id', 'flagstrap-drop-down-' + uniqueId)
+                .addClass('btn ' + plugin.settings.buttonType + ' ' + plugin.settings.buttonSize + ' dropdown-toggle')
+                .on('click', function (e) {
+                    $('#flagstrap-drop-down-' + uniqueId + '-list').toggle();
+                })
+                .html(buttonLabel);
+
+            let inputGroupBtn = $('<div/>')
+                .addClass('input-group-btn')
+                .append(button);
+
+            let search = $('<div/>')
+                .addClass('input-group')
+                .append(searchInput)
+                .append(inputGroupBtn)
+
+            return search;
+        };
+
         let buildDropDownButtonItemList = function () {
             let items = $('<ul/>')
                 .attr('id', 'flagstrap-drop-down-' + uniqueId + '-list')
@@ -474,7 +540,7 @@
             }
         });
 
-        if (options.onDomReady !== undefined && options.onDomReady instanceof Function) {
+        if (options !== undefined && options.onDomReady !== undefined && options.onDomReady instanceof Function) {
             options.onDomReady.call(this);
         }
 
