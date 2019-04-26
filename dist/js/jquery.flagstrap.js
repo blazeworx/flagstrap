@@ -16,6 +16,7 @@
         scrollable: true,
         scrollableHeight: "250px",
         searchable: false,
+        searchAutoComplete: (0|Math.random()*9e6).toString(36), // Yes, a random string - apparently "off" is the worst value to use, to turn off autofill/complete.
         searchPlaceholder: 'Search',
         placeholder: {
             value: '',
@@ -432,6 +433,7 @@
             let searchInput = $('<input/>')
                 .attr('type', 'text')
                 .attr('id', 'flagstrap-search-' + uniqueId)
+                .attr('autocomplete', plugin.settings.searchAutoComplete || 'off')
                 .attr('placeholder', plugin.settings.searchPlaceholder)
                 .addClass('form-control')
                 .on('focus', function (e) {
