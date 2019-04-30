@@ -105,13 +105,14 @@ The example below will take the flagstrap widget created in the example above an
 
 ##### Making it searchable
 
-You can probably use any search plugin you like, but here's how you would do it using https://github.com/stidges/jquery-searchable.
+You can probably use any search plugin you like, but here's how you could do it, using https://github.com/stidges/jquery-searchable.
 
 ```html
 <script>
     $('#flagstrap4').flagStrap({
         searchable: true,
         searchPlaceholder: 'Type to search for countries...',
+        searchClass: 'text-light bg-dark',
         onDomReady: function() {
             $('#flagstrap4 ul').searchable({
                 selector: 'li',
@@ -123,6 +124,7 @@ You can probably use any search plugin you like, but here's how you would do it 
     });
 </script>
 ```
+Note: The rendered input element already has the ```form-control``` class added.
 
 
 ### Options
@@ -182,13 +184,19 @@ You can probably use any search plugin you like, but here's how you would do it 
         <td>searchable</td>
         <td>boolean</td>
         <td>false</td>
-        <td>Use an input field along with the button. This field has no search functionality - you'd have to use an actual search plugin like https://github.com/stidges/jquery-searchable</td>
+        <td>Embed an search input element into the button. This element has no search functionality out of the box - you'd have to use an actual search plugin like https://github.com/stidges/jquery-searchable</td>
     </tr>
     <tr>
         <td>searchPlaceholder</td>
         <td>string</td>
-        <td>"Search"</td>
-        <td>Placeholder text in the search input field.</td>
+        <td>"Search country"</td>
+        <td>Placeholder text in the search input element.</td>
+    </tr>
+    <tr>
+        <td>searchClass</td>
+        <td>string</td>
+        <td>"FancySearchElement"</td>
+        <td>Add one or more classes to the search input element.</td>
     </tr>
     <tr>
         <td>countries (optional)</td>
