@@ -190,25 +190,37 @@ Note: The rendered input element already has the ```form-control``` class added.
         <td>Placeholder text in the search input element.</td>
     </tr>
     <tr>
+        <td>searchAutoComplete</td>
+        <td>string</td>
+        <td>Randomly generated string</td>
+        <td>Turns OFF autocomplete by setting the search input element autocomplete property to some random string. This is currently the best option for actually disabling autocomplete on an input element - browser support is sketchy at best.</td>
+    </tr>
+    <tr>
         <td>searchClass</td>
         <td>string</td>
         <td>"FancySearchElement"</td>
         <td>Add one or more classes to the search input element.</td>
     </tr>
     <tr>
-        <td>countries (optional)</td>
+        <td>countries</td>
         <td>object</td>
         <td>(all)</td>
         <td>Only show specific countries<br>Example:<br><br>{"GB": "United Kingdom", "US": "United States"}<br><br>will only show the USA and UK.</td>
     </tr>
     <tr>
-        <td>onSelect (optional)</td>
+        <td>selectedCountry</td>
+        <td>string</td>
+        <td></td>
+        <td>Set (single) selected country. "GB" or "US" ...</td>
+    </tr>
+    <tr>
+        <td>onSelect</td>
         <td>function</td>
         <td>null</td>
         <td>This callback gets called each time the select is changed. It receives two parameters, the new value, and the select element.</td>
     </tr>
     <tr>
-        <td>onDomReady (optional)</td>
+        <td>onDomReady</td>
         <td>function</td>
         <td>null</td>
         <td>This callback gets called as the last thing, before the plugin returns.</td>

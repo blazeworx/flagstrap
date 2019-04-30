@@ -1,3 +1,7 @@
+.hidden {
+    display: none;
+}
+
 .flagstrap {
     display: inline-block;
     position: relative;
@@ -23,6 +27,7 @@
 .flagstrap-search-button {
     font-size: 1rem;
     height: 45px;
+    width: 100%;
 }
 
 .flagstrap-list {
