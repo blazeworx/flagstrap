@@ -301,8 +301,8 @@
                 htmlSelect = '#' + htmlSelectId;
             }
 
-            // Build HTML Select, Construct the drop down button, Assemble the drop down list items element and insert
             if (plugin.settings.searchable === true) {
+                // Build HTML Select, Construct the searchable drop down button, Assemble the drop down list items element and insert
                 $container
                     .addClass('flagstrap')
                     .append(buildHtmlSelect)
@@ -310,6 +310,7 @@
                     .append(buildDropDownButtonItemList);
             }
             else {
+                // Build HTML Select, Construct the drop down button, Assemble the drop down list items element and insert
                 $container
                     .addClass('flagstrap')
                     .append(buildHtmlSelect)
@@ -338,9 +339,9 @@
             if ( country_code === plugin.settings.placeholder.value ) {
                 html = '<i class="flagstrap-icon flagstrap-placeholder"></i> ' + plugin.settings.placeholder.text;
             } else {
-                html = $container.find('li a[data-val='+country_code+']').html();
+                html = $container.find('li a[data-val=' + country_code + ']').html();
             }
-            $('.flagstrap-selected-' + uniqueId).html( html );
+            $('#flagstrap-selected-' + uniqueId).html( html );
         };
 
         let buildHtmlSelect = function () {
@@ -350,7 +351,7 @@
                 let optionAttributes = {value: code};
                 if (plugin.settings.selectedCountry !== undefined) {
                     if (plugin.settings.selectedCountry === code) {
-                        optionAttributes = {value: code, selected: "selected"};
+                        optionAttributes = {value: code, selected: 'selected'};
                         plugin.selected = {value: code, text: country}
                     }
                 }
@@ -383,7 +384,7 @@
             }
 
             let buttonLabel = $('<span/>')
-                .addClass('flagstrap-selected-' + uniqueId)
+                .attr('id', 'flagstrap-selected-' + uniqueId)
                 .html(selectedLabel)
                 .append(selectedText);
 
@@ -391,9 +392,9 @@
                 .attr('type', 'button')
                 .attr('data-toggle', 'dropdown')
                 .attr('id', 'flagstrap-drop-down-' + uniqueId)
-                .addClass('btn ' + plugin.settings.buttonType + ' ' + plugin.settings.buttonSize + ' dropdown-toggle')
+                .addClass('btn ' + plugin.settings.buttonType + ' ' + plugin.settings.buttonSize)
                 .on('click', function (e) {
-                    $('#flagstrap-drop-down-' + uniqueId + '-list').toggle();
+                    $('#flagstrap-drop-down-' + uniqueId + '-list').toggleClass('d-flex');
                 })
                 .html(buttonLabel);
 
@@ -420,44 +421,68 @@
                 selectedLabel = $('<i/>').addClass('flagstrap-icon flagstrap-' + selectedValue.toLowerCase()).css('margin-right', plugin.settings.labelMargin);
             }
 
-            let caret = $('<span/>')
-                .addClass('caret')
+            let caret = $('<div/>')
+                .addClass('caret dropdown-toggle')
                 .css('margin-left', plugin.settings.labelMargin);
 
-            let buttonLabel = $('<span/>')
-                .addClass('flagstrap-selected-' + uniqueId)
-                .html(selectedLabel)
-                .append(selectedText)
-                .append(caret);
-
+            // Build (embedded) search field
             let searchInput = $('<input/>')
                 .attr('type', 'text')
                 .attr('id', 'flagstrap-search-' + uniqueId)
-                .attr('autocomplete', plugin.settings.searchAutoComplete || 'off')
+                .attr('autocomplete', plugin.settings.searchAutoComplete)
                 .attr('placeholder', plugin.settings.searchPlaceholder)
-                .addClass('form-control')
-                .on('focus', function (e) {
-                    $('#flagstrap-drop-down-' + uniqueId + '-list').show();
+                .attr('value', selectedText)
+                .addClass('flex-grow-1 form-control hidden ' + plugin.settings.searchClass)
+                .on('focus', function () {
+                    $('#flagstrap-drop-down-' + uniqueId + '-list').addClass('d-flex');
+                })
+                .on('click', function(e) {
+                    e.stopPropagation();
+                })
+                .on('keyup', function(e) {
+                    // escape
+                    if (e.which === 27) {
+                        $('#flagstrap-selected-' + uniqueId).toggleClass('hidden');
+                        $('#flagstrap-search-' + uniqueId).toggleClass('hidden');
+                        $('#flagstrap-drop-down-' + uniqueId + '-list').removeClass('d-flex');
+                    }
                 });
+
+            let buttonLabel = $('<span/>')
+                .attr('id', 'flagstrap-selected-' + uniqueId)
+                .addClass('flex-grow-1')
+                .html(selectedLabel)
+                .append(selectedText);
+
+            let buttonContentWrapper = $('<div/>')
+                .addClass('input-group-sm w-100')
+                // Regular button content
+                .append(buttonLabel)
+                // Embedded search field
+                .append(searchInput);
 
             let button = $('<button/>')
                 .attr('type', 'button')
-                .attr('data-toggle', 'dropdown')
                 .attr('id', 'flagstrap-drop-down-' + uniqueId)
-                .addClass('btn ' + plugin.settings.buttonType + ' ' + plugin.settings.buttonSize + ' dropdown-toggle')
-                .on('click', function (e) {
-                    $('#flagstrap-drop-down-' + uniqueId + '-list').toggle();
+                .addClass('btn ' + plugin.settings.buttonType + ' ' + plugin.settings.buttonSize + ' d-flex justify-content-end flagstrap-search-button')
+                .on('click', function () {
+                    // Toggle shown button content
+                    $('#flagstrap-selected-' + uniqueId).toggleClass('hidden');
+                    // Toggle dropdown
+                    $('#flagstrap-drop-down-' + uniqueId + '-list').toggleClass('d-flex');
+                    // Update search field, toggle visibility and set focus to search field
+                    $('#flagstrap-search-' + uniqueId).val($('#flagstrap-selected-' + uniqueId).text()).toggleClass('hidden').focus();
                 })
-                .html(buttonLabel);
+                .append(buttonContentWrapper)
+                .append(caret);
 
             let inputGroupBtn = $('<div/>')
-                .addClass('input-group-btn')
+                .addClass('input-group-btn w-100')
                 .append(button);
 
             let search = $('<div/>')
                 .addClass('input-group')
-                .append(searchInput)
-                .append(inputGroupBtn)
+                .append(inputGroupBtn);
 
             return search;
         };
@@ -466,12 +491,14 @@
             let items = $('<ul/>')
                 .attr('id', 'flagstrap-drop-down-' + uniqueId + '-list')
                 .attr('aria-labelled-by', 'flagstrap-drop-down-' + uniqueId)
-                .addClass('dropdown-menu');
+                .addClass('flagstrap-list');
 
             if (plugin.settings.scrollable) {
-                items.css('height', 'auto')
-                    .css('max-height', plugin.settings.scrollableHeight)
-                    .css('overflow-x', 'hidden');
+                items.css({
+                    height: 'auto',
+                    maxHeight: plugin.settings.scrollableHeight,
+                    overflowX: 'hidden'
+                });
             }
 
             // Populate the bootstrap dropdown item list
@@ -495,13 +522,20 @@
                     .on('click', function (e) {
                         $(htmlSelect).val($(this).data('val'));
                         $(htmlSelect).trigger('change');
-                        $('.flagstrap-selected-' + uniqueId).html($(this).html());
-                        $('#flagstrap-drop-down-' + uniqueId + '-list').toggle();
-                        e.preventDefault();
+                        $('#flagstrap-selected-' + uniqueId).html($(this).html());
+
+                        if (plugin.settings.searchable === true) {
+                            $('#flagstrap-search-' + uniqueId).toggleClass('hidden').val(text);
+                            $('#flagstrap-selected-' + uniqueId).toggleClass('hidden');
+                        }
+
+                        $('#flagstrap-drop-down-' + uniqueId + '-list').removeClass('d-flex');
                     });
 
                 // Make it a list item
-                let listItem = $('<li/>').prepend(flagStrapItem);
+                let listItem = $('<li/>')
+                    .addClass('flagstrap-list-item')
+                    .prepend(flagStrapItem);
 
                 // Append it to the drop down item list
                 items.append(listItem);

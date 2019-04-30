@@ -16,8 +16,47 @@
   display: none
 }
 
-.flagstrap ul li {
+.flagstrap-dropdown {
+    overflow: hidden;
+}
+
+.flagstrap-search-button {
+    font-size: 1rem;
+    height: 45px;
+}
+
+.flagstrap-list {
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    padding: .5rem 0;
+    margin: .125rem 0 0;
+    font-size: 1rem;
+    color: inherit;
+    text-align: left;
+    list-style: none;
+    background-color: var(--white);
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: .25rem;
+    box-shadow: 0 5px 5px 1px grey;
+}
+
+.flagstrap-list-item {
+    width: 100%;
+    padding: 0 .5rem;
     cursor: pointer;
+    background-color: var(--white);
+}
+
+.flagstrap-list-item:hover {
+    color: var(--white);
+    background-color: var(--blue);
 }
 
 .flagstrap-icon.flagstrap-ad {
