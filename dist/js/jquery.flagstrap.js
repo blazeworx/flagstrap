@@ -16,7 +16,6 @@
         inputId: undefined,
         buttonSize: 'btn-md',
         buttonType: 'btn-default',
-        labelMargin: '10px',
         scrollable: true,
         scrollableHeight: '250px',
         searchable: false,
@@ -385,9 +384,7 @@
             selectedValue = plugin.selected.value || selectedValue;
 
             if (selectedValue !== plugin.settings.placeholder.value) {
-                selectedLabel = $('<i/>')
-                .addClass('flagstrap-icon flagstrap-' + selectedValue.toLowerCase())
-                .css('margin-right', plugin.settings.labelMargin);
+                selectedLabel = $('<i/>').addClass('flagstrap-icon flagstrap-' + selectedValue.toLowerCase());
             }
 
             let buttonLabel = $('<span/>')
@@ -406,8 +403,7 @@
                 .html(buttonLabel);
 
             $('<span/>')
-                .addClass('dropdown-toggle caret')
-                .css('margin-left', plugin.settings.labelMargin)
+                .addClass('dropdown-toggle flagstrap-caret')
                 .insertAfter(buttonLabel);
 
             return button;
@@ -425,12 +421,10 @@
             selectedValue = plugin.selected.value || selectedValue;
 
             if (selectedValue !== plugin.settings.placeholder.value) {
-                selectedLabel = $('<i/>').addClass('flagstrap-icon flagstrap-' + selectedValue.toLowerCase()).css('margin-right', plugin.settings.labelMargin);
+                selectedLabel = $('<i/>').addClass('flagstrap-icon flagstrap-' + selectedValue.toLowerCase());
             }
 
-            let caret = $('<div/>')
-                .addClass('caret dropdown-toggle')
-                .css('margin-left', plugin.settings.labelMargin);
+            let caret = $('<div/>').addClass('flagstrap-caret dropdown-toggle');
 
             // Build (embedded) search field
             let searchInput = $('<input/>')
@@ -438,8 +432,7 @@
                 .attr('id', 'flagstrap-search-' + uniqueId)
                 .attr('autocomplete', plugin.settings.searchAutoComplete)
                 .attr('placeholder', plugin.settings.searchPlaceholder)
-                .attr('value', selectedText)
-                .addClass('flex-grow-1 form-control hidden ' + plugin.settings.searchClass)
+                .addClass('form-control ' + plugin.settings.searchClass)
                 .on('focus', function () {
                     $('#flagstrap-drop-down-' + uniqueId + '-list').addClass('d-flex');
                 })
@@ -450,8 +443,9 @@
                     // escape
                     if (e.which === 27) {
                         $('#flagstrap-selected-' + uniqueId).toggleClass('hidden');
-                        $('#flagstrap-search-' + uniqueId).toggleClass('hidden');
+                        $('#flagstrap-search-wrapper-' + uniqueId).toggleClass('hidden');
                         $('#flagstrap-drop-down-' + uniqueId + '-list').removeClass('d-flex');
+                        $('#flagstrap-search-' + uniqueId).val('');
                     }
                 });
 
@@ -466,7 +460,22 @@
                 // Regular button content
                 .append(buttonLabel)
                 // Embedded search field
-                .append(searchInput);
+                .append(
+                    $('<span>')
+                        .attr('id', 'flagstrap-search-wrapper-' + uniqueId)
+                        .addClass('flex-grow-1 hidden')
+                        .append(searchInput)
+                        .append(
+                            $('<span>')
+                                .addClass('flagstrap-search-clear fas fa-times-circle')
+                                .on('click', function(e) {
+                                    e.stopPropagation();
+                                    // Clear search field and set focus
+                                    $('#flagstrap-search-' + uniqueId).val('').trigger('change').focus();
+                                }
+                            )
+                        )
+                );
 
             let button = $('<button/>')
                 .attr('type', 'button')
@@ -475,10 +484,11 @@
                 .on('click', function () {
                     // Toggle shown button content
                     $('#flagstrap-selected-' + uniqueId).toggleClass('hidden');
+                    $('#flagstrap-search-wrapper-' + uniqueId).toggleClass('hidden');
                     // Toggle dropdown
                     $('#flagstrap-drop-down-' + uniqueId + '-list').toggleClass('d-flex');
-                    // Update search field, toggle visibility and set focus to search field
-                    $('#flagstrap-search-' + uniqueId).val($('#flagstrap-selected-' + uniqueId).text()).toggleClass('hidden').focus();
+                    // Set focus to search field
+                    $('#flagstrap-search-' + uniqueId).focus();
                 })
                 .append(buttonContentWrapper)
                 .append(caret);
@@ -532,11 +542,18 @@
                         $('#flagstrap-selected-' + uniqueId).html($(this).html());
 
                         if (plugin.settings.searchable === true) {
-                            $('#flagstrap-search-' + uniqueId).toggleClass('hidden').val(text);
+                            // Toggle shown button content
+                            $('#flagstrap-search-wrapper-' + uniqueId).toggleClass('hidden');
                             $('#flagstrap-selected-' + uniqueId).toggleClass('hidden');
+                            // Clear search field
+                            $('#flagstrap-search-' + uniqueId).val('');
                         }
 
                         $('#flagstrap-drop-down-' + uniqueId + '-list').removeClass('d-flex');
+
+                        if (options !== undefined && options.onPostSelect !== undefined && options.onPostSelect instanceof Function) {
+                            options.onPostSelect.call(this);
+                        }
                     });
 
                 // Make it a list item

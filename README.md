@@ -73,7 +73,6 @@ This example will create a Flagstrap Dropdown giving the input field the name of
         inputName: 'country',
         buttonSize: "btn-lg",
         buttonType: "btn-primary",
-        labelMargin: "20px",
         scrollable: false,
         scrollableHeight: "350px",
         onSelect: function(value, element) {
@@ -160,12 +159,6 @@ Note: The rendered input element already has the ```form-control``` class added.
         <td>The bootstrap button type `class` for this drop down</td>
     </tr>
     <tr>
-        <td>labelMargin</td>
-        <td>string</td>
-        <td>"20px"</td>
-        <td>The `margin` between `flag` and `text label`</td>
-    </tr>
-    <tr>
         <td>scrollable</td>
         <td>boolean</td>
         <td>false</td>
@@ -224,6 +217,12 @@ Note: The rendered input element already has the ```form-control``` class added.
         <td>function</td>
         <td>null</td>
         <td>This callback gets called as the last thing, before the plugin returns.</td>
+    </tr>
+    <tr>
+        <td>onPostSelect</td>
+        <td>function</td>
+        <td>null</td>
+        <td>This callback gets called as the last thing, after an item in the list is clicked.</td>
     </tr>
     <tr>
         <td>placeholder</td>

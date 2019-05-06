@@ -12,7 +12,12 @@
     display: inline-block;
     width: 16px;
     height: 11px;
-    background: url(flags.png) no-repeat
+    background: url(flags.png) no-repeat;
+    margin-right: 20px;
+}
+
+.flagstrap-caret {
+    margin: auto 0 auto 20px;
 }
 
 .flagstrap-placeholder,
@@ -26,8 +31,19 @@
 
 .flagstrap-search-button {
     font-size: 1rem;
-    height: 45px;
+    height: 52px;
     width: 100%;
+}
+
+.flagstrap-search-clear {
+    position: absolute;
+    right: 50px;
+    top: 18px;
+    height: 14px;
+    margin: auto;
+    font-size: 14px;
+    cursor: pointer;
+    color: #ccc;
 }
 
 .flagstrap-list {

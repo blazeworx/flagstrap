@@ -198,8 +198,8 @@ $('#basic').flagStrap();
 <pre class="prettyprint lang-js">
 $('#origin').flagStrap({
     placeholder: {
-        value: "",
-        text: "Country of origin"
+        value: '',
+        text: 'Country of origin'
     }
 });
 </pre>
@@ -226,15 +226,14 @@ $('#origin').flagStrap({
 <pre class="prettyprint lang-js">
  $('#options').flagStrap({
     countries: {
-        "AU": "Australia",
-        "GB": "United Kingdom",
-        "US": "United States"
+        'AU': 'Australia',
+        'GB': 'United Kingdom',
+        'US': 'United States'
     },
-    buttonSize: "btn-sm",
-    buttonType: "btn-info",
-    labelMargin: "10px",
+    buttonSize: 'btn-sm',
+    buttonType: 'btn-info',
     scrollable: false,
-    scrollableHeight: "350px"
+    scrollableHeight: '350px'
 });
 </pre>
         </div>
@@ -263,11 +262,10 @@ $('#origin').flagStrap({
             </h3>
 <pre class="prettyprint lang-js">
 $('#advanced').flagStrap({
-    buttonSize: "btn-lg",
-    buttonType: "btn-primary",
-    labelMargin: "20px",
+    buttonSize: 'btn-lg',
+    buttonType: 'btn-primary',
     scrollable: false,
-    scrollableHeight: "350px",
+    scrollableHeight: '350px',
     onSelect: function (value, element) {
         alert(value);
         console.log(element);
@@ -317,6 +315,9 @@ $('#searchable').flagStrap({
             searchField: '#searchable input:first',
             searchType: 'default'
         })
+    },
+    onPostSelect: function() {
+        $('#searchable ul li').attr('style', '');
     }
 });
             </pre>
@@ -347,30 +348,30 @@ $('#searchable').flagStrap({
 
     $('#origin').flagStrap({
         placeholder: {
-            value: "",
-            text: "Country of origin"
+            value: '',
+            text: 'Country of origin'
         }
     });
 
     $('#options').flagStrap({
         countries: {
-            "AU": "Australia",
-            "GB": "United Kingdom",
-            "US": "United States"
+            'AU': 'Australia',
+            'GB': 'United Kingdom',
+            'US': 'United States'
         },
-        buttonSize: "btn-sm",
-        buttonType: "btn-info",
-        labelMargin: "10px",
+        buttonSize: 'btn-sm',
+        buttonType: 'btn-info',
+        labelMargin: '10px',
         scrollable: false,
-        scrollableHeight: "350px"
+        scrollableHeight: '350px'
     });
 
     $('#advanced').flagStrap({
-        buttonSize: "btn-lg",
-        buttonType: "btn-primary",
-        labelMargin: "20px",
+        buttonSize: 'btn-lg',
+        buttonType: 'btn-primary',
+        labelMargin: '20px',
         scrollable: false,
-        scrollableHeight: "350px",
+        scrollableHeight: '350px',
         onSelect: function (value, element) {
             alert(value);
             console.log(element);
@@ -390,6 +391,9 @@ $('#searchable').flagStrap({
                 searchField: '#searchable input:first',
                 searchType: 'default'
             })
+        },
+        onPostSelect: function() {
+            $('#searchable ul li').attr('style', '');
         }
     });
 
