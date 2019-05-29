@@ -1,3 +1,7 @@
+.hidden {
+    display: none;
+}
+
 .flagstrap {
     display: inline-block;
     position: relative;
@@ -8,12 +12,72 @@
     display: inline-block;
     width: 16px;
     height: 11px;
-    background: url(flags.png) no-repeat
+    background: url(flags.png) no-repeat;
+    margin-right: 20px;
+}
+
+.flagstrap-caret {
+    margin: auto 0 auto 20px;
 }
 
 .flagstrap-placeholder,
 .flagstrap-placeholder i {
   display: none
+}
+
+.flagstrap-dropdown {
+    overflow: hidden;
+}
+
+.flagstrap-search-button {
+    font-size: 1rem;
+    height: 52px;
+    width: 100%;
+}
+
+.flagstrap-search-clear {
+    position: absolute;
+    right: 50px;
+    top: 18px;
+    height: 14px;
+    margin: auto;
+    font-size: 14px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.flagstrap-list {
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    padding: .5rem 0;
+    margin: .125rem 0 0;
+    font-size: 1rem;
+    color: inherit;
+    text-align: left;
+    list-style: none;
+    background-color: var(--white);
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: .25rem;
+    box-shadow: 0 5px 5px 1px grey;
+}
+
+.flagstrap-list-item {
+    width: 100%;
+    padding: 0 .5rem;
+    cursor: pointer;
+    background-color: var(--white);
+}
+
+.flagstrap-list-item:hover {
+    color: var(--white);
+    background-color: var(--blue);
 }
 
 .flagstrap-icon.flagstrap-ad {

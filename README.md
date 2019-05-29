@@ -1,11 +1,8 @@
 # Flagstrap
 
-A lightwieght jQuery plugin for creating Bootstrap 3 compatible country select boxes with flags.
+A lightwieght jQuery plugin for creating Bootstrap 4 compatible country select boxes with flags.
 
 ![Flagstrap Demo](http://blazeworx.com/flagstrap.gif)
-
-### Demo
-http://blazeworx.github.io/flagstrap
 
 ### Usage
 
@@ -76,7 +73,6 @@ This example will create a Flagstrap Dropdown giving the input field the name of
         inputName: 'country',
         buttonSize: "btn-lg",
         buttonType: "btn-primary",
-        labelMargin: "20px",
         scrollable: false,
         scrollableHeight: "350px",
         onSelect: function(value, element) {
@@ -89,6 +85,43 @@ This example will create a Flagstrap Dropdown giving the input field the name of
     });
 </script>
 ```
+
+##### Setting value of widget after creation
+You cannot set the value of the widget using the val() method on the underlying select, as this does not notify the plugin of the change.
+
+Passing a string value to the plugin instead of an object will change value of the underlying select and update the UI display. The string passed should be the country code of the country to select.
+
+The example below will take the flagstrap widget created in the example above and change its selected value to the United States.
+
+```html
+<script>
+    $('#flagstrap3').flagStrap('US');
+</script>
+```
+
+##### Making it searchable
+
+You can probably use any search plugin you like, but here's how you could do it, using https://github.com/stidges/jquery-searchable.
+
+```html
+<script>
+    $('#flagstrap4').flagStrap({
+        searchable: true,
+        searchPlaceholder: 'Type to search for countries...',
+        searchClass: 'text-light bg-dark',
+        onDomReady: function() {
+            $('#flagstrap4 ul').searchable({
+                selector: 'li',
+                childSelector: 'a',
+                searchField: '#flagstrap4 input:first',
+                searchType: 'default'
+            })
+        }
+    });
+</script>
+```
+Note: The rendered input element already has the ```form-control``` class added.
+
 
 ### Options
 <table class="table table-bordered table-striped">
@@ -126,12 +159,6 @@ This example will create a Flagstrap Dropdown giving the input field the name of
         <td>The bootstrap button type `class` for this drop down</td>
     </tr>
     <tr>
-        <td>labelMargin</td>
-        <td>string</td>
-        <td>"20px"</td>
-        <td>The `margin` between `flag` and `text label`</td>
-    </tr>
-    <tr>
         <td>scrollable</td>
         <td>boolean</td>
         <td>false</td>
@@ -144,18 +171,60 @@ This example will create a Flagstrap Dropdown giving the input field the name of
         <td>`max-height` for the scrollable drop down</td>
     </tr>
     <tr>
-        <td>countries (optional)</td>
+        <td>searchable</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Embed an search input element into the button. This element has no search functionality out of the box - you'd have to use an actual search plugin like https://github.com/stidges/jquery-searchable</td>
+    </tr>
+    <tr>
+        <td>searchPlaceholder</td>
+        <td>string</td>
+        <td>"Search country"</td>
+        <td>Placeholder text in the search input element.</td>
+    </tr>
+    <tr>
+        <td>searchAutoComplete</td>
+        <td>string</td>
+        <td>Randomly generated string</td>
+        <td>Turns OFF autocomplete by setting the search input element autocomplete property to some random string. This is currently the best option for actually disabling autocomplete on an input element - browser support is sketchy at best.</td>
+    </tr>
+    <tr>
+        <td>searchClass</td>
+        <td>string</td>
+        <td>"FancySearchElement"</td>
+        <td>Add one or more classes to the search input element.</td>
+    </tr>
+    <tr>
+        <td>countries</td>
         <td>object</td>
         <td>(all)</td>
         <td>Only show specific countries<br>Example:<br><br>{"GB": "United Kingdom", "US": "United States"}<br><br>will only show the USA and UK.</td>
     </tr>
     <tr>
-        <td>onSelect (optional)</td>
+        <td>selectedCountry</td>
+        <td>string</td>
+        <td></td>
+        <td>Set (single) selected country. "GB" or "US" ...</td>
+    </tr>
+    <tr>
+        <td>onSelect</td>
         <td>function</td>
         <td>null</td>
         <td>This callback gets called each time the select is changed. It receives two parameters, the new value, and the select element.</td>
-     </tr>
-     <tr>
+    </tr>
+    <tr>
+        <td>onDomReady</td>
+        <td>function</td>
+        <td>null</td>
+        <td>This callback gets called as the last thing, before the plugin returns.</td>
+    </tr>
+    <tr>
+        <td>onPostSelect</td>
+        <td>function</td>
+        <td>null</td>
+        <td>This callback gets called as the last thing, after an item in the list is clicked.</td>
+    </tr>
+    <tr>
         <td>placeholder</td>
         <td>bool|object</td>
         <td>{value: "", text: "Please select a country"}</td>
@@ -170,3 +239,4 @@ This project was created by Alex Carter. I owe many thanks to the following peop
 
 * [Matthew Machuga](https://github.com/machuga)
 * [TJ Miller](https://github.com/sixlive)
+* [Mads Jensen](https://github.com/sjoller)
